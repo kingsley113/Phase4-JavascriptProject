@@ -1,7 +1,13 @@
 // Identify page elements
-const startScreen = document.getElementById("start-screen");
-const characterForm = document.getElementById("character-form");
-// const charNameInput = document.getElementById("characterName");
+let startScreen;
+let characterForm;
+
+// Set page elements on DOM load
+document.addEventListener("DOMContentLoaded", (event) => {
+  startScreen = document.getElementById("start-screen");
+  characterForm = document.getElementById("character-form");
+  console.log("DOM fully loaded.");
+});
 
 // Declare global variables
 let currentCharacter;
@@ -85,6 +91,7 @@ async function fetchQuestion(questionNumber) {
 // Render question on screen, adding event listener to each selection
 function renderQuestion(questionObject) {
   // Finally the DOM manipulation!!!!
+  startScreen.classList.add("hidden");
   // hide title screen
   // create 6 question elements, each one should have an id of 'question-response-x' this will determine the location on screen
   // create center round thing element
