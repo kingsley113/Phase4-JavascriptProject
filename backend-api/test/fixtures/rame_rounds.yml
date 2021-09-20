@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  character_id: MyString
+  question1resp: MyString
+  question2resp: MyString
+  question3resp: MyString
+  question4resp: MyString
+  question5resp: MyString
+  question6resp: MyString
+  score: MyString
+
+two:
+  character_id: MyString
+  question1resp: MyString
+  question2resp: MyString
+  question3resp: MyString
+  question4resp: MyString
+  question5resp: MyString
+  question6resp: MyString
+  score: MyString

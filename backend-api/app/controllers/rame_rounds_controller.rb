@@ -1,0 +1,2 @@
+class RameRoundsController < ApplicationController
+end
