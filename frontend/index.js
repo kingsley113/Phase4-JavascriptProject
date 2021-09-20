@@ -91,9 +91,11 @@ async function fetchQuestion(questionNumber) {
 // Render question on screen, adding event listener to each selection
 function renderQuestion(questionObject) {
   // Finally the DOM manipulation!!!!
-  startScreen.classList.add("hidden");
   // hide title screen
+  startScreen.classList.add("hidden");
+  // Remove previous question elements
   // create 6 question elements, each one should have an id of 'question-response-x' this will determine the location on screen
+  // for (const answer of questionObject.responses) {  }
   // create center round thing element
   // show dice roller-thingy method in circle element, probably call another function to show this
   // append question elements
