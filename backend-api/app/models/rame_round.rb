@@ -1,2 +1,0 @@
-class RameRound < ApplicationRecord
-end

@@ -1,6 +1,6 @@
-class CreateRameRounds < ActiveRecord::Migration[6.1]
+class CreateGameRounds < ActiveRecord::Migration[6.1]
   def change
-    create_table :rame_rounds do |t|
+    create_table :game_rounds do |t|
       t.integer :character_id
       t.integer :question1resp
       t.integer :question2resp

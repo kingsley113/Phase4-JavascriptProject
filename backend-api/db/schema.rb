@@ -18,19 +18,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_004023) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.text "question"
-    t.text "answer1"
-    t.text "answer2"
-    t.text "answer3"
-    t.text "answer4"
-    t.text "answer5"
-    t.text "answer6"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "rame_rounds", force: :cascade do |t|
+  create_table "game_rounds", force: :cascade do |t|
     t.integer "character_id"
     t.integer "question1resp"
     t.integer "question2resp"
@@ -39,6 +27,18 @@ ActiveRecord::Schema.define(version: 2021_09_20_004023) do
     t.integer "question5resp"
     t.integer "question6resp"
     t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "question"
+    t.text "answer1"
+    t.text "answer2"
+    t.text "answer3"
+    t.text "answer4"
+    t.text "answer5"
+    t.text "answer6"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
