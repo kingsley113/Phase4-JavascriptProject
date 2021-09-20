@@ -8,7 +8,7 @@
 
 # Create Questions
 question1 = Question.new 
-question1.question = ""
+question1.question = "When you gaze into the mirror, you see.."
 question1.answer1 = ""
 question1.phrase1 = ""
 question1.answer2 = ""
@@ -24,7 +24,7 @@ question1.phrase6 = ""
 question1.save
 
 question2 = Question.new 
-question2.question = ""
+question2.question = "Who is always eager to…"
 question2.answer1 = ""
 question2.phrase1 = ""
 question2.answer2 = ""
@@ -40,7 +40,7 @@ question2.phrase6 = ""
 question2.save
 
 question3 = Question.new 
-question3.question = ""
+question3.question = "When faced with a challenge…"
 question3.answer1 = ""
 question3.phrase1 = ""
 question3.answer2 = ""
@@ -56,7 +56,7 @@ question3.phrase6 = ""
 question3.save
 
 question4 = Question.new 
-question4.question = ""
+question4.question = "You see a group of bandits blocking the road ahead…"
 question4.answer1 = ""
 question4.phrase1 = ""
 question4.answer2 = ""
@@ -72,7 +72,7 @@ question4.phrase6 = ""
 question4.save
 
 question5 = Question.new 
-question5.question = ""
+question5.question = "When you need something made…"
 question5.answer1 = ""
 question5.phrase1 = ""
 question5.answer2 = ""
@@ -88,7 +88,7 @@ question5.phrase6 = ""
 question5.save
 
 question6 = Question.new 
-question6.question = ""
+question6.question = "When moving around…"
 question6.answer1 = ""
 question6.phrase1 = ""
 question6.answer2 = ""
