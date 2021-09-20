@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Yatra+One&display=swap");
+
+body {
+  /* background-image: url("public/images/background-parchment-seamless.jpg"); */
+  background-image: url("public/images/fantasy-background.jpg");
+  background-color: rgb(221, 177, 112);
+  background-position: center;
+  background-size: cover;
+  /* backdrop-filter: blur(10px); */
+  background-attachment: fixed;
+  font-family: "Yatra One", cursive;
+
+  margin: 0px;
+}
+
+#parchment-background {
+  position: absolute;
+  height: 100%;
+  /* Actual Size */
+  min-height: 960px;
+  min-width: 720px;
+  /* Desired Size */
+  min-height: 1146px;
+  min-width: 860px;
+
+  justify-self: center;
+  z-index: -10;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  /* border: 5px;
+  border-style: solid; */
+}
+
+.hidden {
+  display: none;
+}
