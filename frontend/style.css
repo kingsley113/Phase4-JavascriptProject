@@ -17,14 +17,13 @@ body {
   position: absolute;
   height: 100%;
   /* Actual Size */
-  min-height: 960px;
-  min-width: 720px;
+  /* min-height: 960px;
+  min-width: 720px; */
   /* Desired Size */
   min-height: 1146px;
   min-width: 860px;
 
   justify-self: center;
-  z-index: -10;
 }
 
 .centered-content {
@@ -33,10 +32,37 @@ body {
   align-content: center;
   height: 100%;
   width: 100%;
-  /* border: 5px;
-  border-style: solid; */
+}
+
+#background-container {
+  z-index: -10;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .hidden {
   display: none;
+}
+
+#start-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-start;
+  text-align: center;
+  /* border: 1px; */
+  /* border-style: solid; */
+}
+
+#start-title {
+  padding-top: max(230px, 20vh);
+  border: 1px;
+  border-style: solid;
+}
+
+#character-form {
+  padding-top: 150px;
+  border: 1px;
+  border-style: solid;
 }

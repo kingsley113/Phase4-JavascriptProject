@@ -8,12 +8,24 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="centered-content">
+    <div class="centered-content" id="background-container">
       <img
         src="public/images/parchment-page-curled.png"
         alt="parchment-page-curled"
         id="parchment-background"
       />
+    </div>
+    <div id="start-screen">
+      <h1 id="start-title">This is the Title Screen</h1>
+      <div id="character-form">
+        <form action="http://localhost:3000/characters" method="POST">
+          <input type="text" name="characterName" id="characterName" />
+          <br />
+          <label for="characterName">Enter Character Name</label>
+          <br />
+          <input type="submit" id="submit" value="Begin!" />
+        </form>
+      </div>
     </div>
   </body>
 </html>
