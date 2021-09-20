@@ -10,26 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_19_225321) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2021_09_20_004023) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "games", force: :cascade do |t|
-    t.integer "character_id"
-    t.integer "question1resp"
-    t.integer "question2resp"
-    t.integer "question3resp"
-    t.integer "question4resp"
-    t.integer "question5resp"
-    t.integer "question6resp"
-    t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,6 +26,19 @@ ActiveRecord::Schema.define(version: 2021_09_19_225321) do
     t.text "answer4"
     t.text "answer5"
     t.text "answer6"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rame_rounds", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "question1resp"
+    t.integer "question2resp"
+    t.integer "question3resp"
+    t.integer "question4resp"
+    t.integer "question5resp"
+    t.integer "question6resp"
+    t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
