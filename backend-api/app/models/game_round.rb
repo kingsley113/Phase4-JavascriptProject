@@ -1,2 +1,0 @@
-class GameRound < ApplicationRecord
-end
