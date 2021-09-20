@@ -4,27 +4,27 @@ const characterForm = document.getElementById("character-form");
 // const charNameInput = document.getElementById("characterName");
 
 // Declare global variables
-const currentCharacter;
+let currentCharacter;
 let currentQuestion = 0;
 
 // Declare Object Classes
 class Character {
   constructor(name, id, questionsAnswered = 0) {
     (this._name = name),
-		(this._id = id),
-		(this.questionsAnswered = questionsAnswered),
-		(this.responsePhrases = []);
+      (this._id = id),
+      (this.questionsAnswered = questionsAnswered),
+      (this.responsePhrases = []);
   }
 
-	currentQuestionNo() {
-		return this.questionsAnswered + 1;
-	}
+  currentQuestionNo() {
+    return this.questionsAnswered + 1;
+  }
 }
 
 function createCharacter() {
-	currentCharacter = new Character(this.name, this.id, 0)
-	// This will need some work to get the right info out of the object TODO:
-	console.log(currentCharacter);
+  currentCharacter = new Character(this.name, this.id, 0);
+  // This will need some work to get the right info out of the object TODO:
+  console.log(currentCharacter);
 }
 
 // Send Character name to create new character and trigger start of questions
@@ -49,7 +49,7 @@ function submitCharacter(characterName) {
       // do something with this success return object TODO:
       // show first question
       createCharacter(object);
-			fetchQuestion(currentCharacter.currentQuestionNo());
+      fetchQuestion(currentCharacter.currentQuestionNo());
     })
     .catch(function (error) {
       alert("An error in the witchcraft occured!");
@@ -59,37 +59,42 @@ function submitCharacter(characterName) {
 
 // Fetch question - pass in current question # requested
 async function fetchQuestion(questionNumber) {
-	const configurationObject = {
-		method: "GET",
-		headers: {
-			"Content-Type": "application/json",
-			Accept: "application/json",
-		},
-		body: JSON.stringify({ questionNumber }),
-	};
-	
-	await fetch("http://localhost:3000/characters", configurationObject)
-	.then(function(response) {
-		return response.json();
-	})
-	.then(function(object) {
-			// Recieve question object - done
-			renderQuestion(object);
-		})
-		.catch(function(error) {
-			alert("Go back, we messed up and cant find this question!");
-			console.log(error.message);
-		})
-	}
-	
-	// Render question on screen, adding event listener to each selection
+  const configurationObject = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ questionNumber }),
+  };
+
+  await fetch("http://localhost:3000/characters", configurationObject)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (object) {
+      // Recieve question object - done
+      renderQuestion(object);
+    })
+    .catch(function (error) {
+      alert("Go back, we messed up and cant find this question!");
+      console.log(error.message);
+    });
+}
+
+// Render question on screen, adding event listener to each selection
 function renderQuestion(questionObject) {
-	// Finally the DOM manipulation!!!!
+  // Finally the DOM manipulation!!!!
+  // hide title screen
+  // create 6 question elements, each one should have an id of 'question-response-x' this will determine the location on screen
+  // create center round thing element
+  // show dice roller-thingy method in circle element, probably call another function to show this
+  // append question elements
 }
 
 // When selected send fetch request to sever with question_id, character_id, & response #
-	// Recieve confirmation back from server 
-	// Update questions answered & response phrases for character
-	// check if all 6 questions have been answered (questions answered = 6)
-		// if yes, trigger end page
-		// if no, fetch next question
+// Recieve confirmation back from server
+// Update questions answered & response phrases for character
+// check if all 6 questions have been answered (questions answered = 6)
+// if yes, trigger end page
+// if no, fetch next question

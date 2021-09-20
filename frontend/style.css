@@ -66,3 +66,23 @@ body {
   /* border: 1px;
   border-style: solid; */
 }
+
+/* Question Responses */
+#question-response-1 {
+  position: absolute;
+}
+#question-response-2 {
+  position: absolute;
+}
+#question-response-3 {
+  position: absolute;
+}
+#question-response-4 {
+  position: absolute;
+}
+#question-response-5 {
+  position: absolute;
+}
+#question-response-6 {
+  position: absolute;
+}
