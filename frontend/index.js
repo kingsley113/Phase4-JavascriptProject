@@ -9,7 +9,7 @@ let currentQuestion = 0;
 
 // Declare Object Classes
 class Character {
-  constructor(name, id, questionsAnswered) {
+  constructor(name, id, questionsAnswered = 0) {
     (this._name = name),
 		(this._id = id),
 		(this.questionsAnswered = questionsAnswered),
@@ -17,7 +17,7 @@ class Character {
   }
 
 	currentQuestionNo() {
-		return this.questionsAnswered + 1
+		return this.questionsAnswered + 1;
 	}
 }
 
@@ -49,9 +49,42 @@ function submitCharacter(characterName) {
       // do something with this success return object TODO:
       // show first question
       createCharacter(object);
+			fetchQuestion(currentCharacter.currentQuestionNo());
     })
     .catch(function (error) {
       alert("An error in the witchcraft occured!");
       console.log(error.message);
     });
 }
+
+// Fetch question - pass in current question # requested
+	// Recieve question object
+	// Render question on screen, adding event listener to each selection
+async function fetchQuestion(questionNumber) {
+	const configurationObject = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ questionNumber }),
+  };
+
+	await fetch("http://localhost:3000/characters", configurationObject)
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(object) {
+			// get this question object to the render question method TODO:
+		})
+		.catch(function(error) {
+			alert("Go back, we messed up and cant find this question!");
+			console.log(error.message);
+		})
+}
+// When selected send fetch request to sever with question_id, character_id, & response #
+	// Recieve confirmation back from server 
+	// Update questions answered & response phrases for character
+	// check if all 6 questions have been answered (questions answered = 6)
+		// if yes, trigger end page
+		// if no, fetch next question
