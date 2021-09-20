@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  character_id: 1
+  question1resp: 1
+  question2resp: 1
+  question3resp: 1
+  question4resp: 1
+  question5resp: 1
+  question6resp: 1
+  score: 1
+
+two:
+  character_id: 1
+  question1resp: 1
+  question2resp: 1
+  question3resp: 1
+  question4resp: 1
+  question5resp: 1
+  question6resp: 1
+  score: 1
