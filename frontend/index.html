@@ -17,15 +17,17 @@
     </div>
     <div id="start-screen">
       <h1 id="start-title">This is the Title Screen</h1>
-      <div id="character-form">
-        <form action="http://localhost:3000/characters" method="POST">
-          <input type="text" name="characterName" id="characterName" />
-          <br />
-          <label for="characterName">Enter Character Name</label>
-          <br />
-          <input type="submit" id="submit" value="Begin!" />
-        </form>
-      </div>
+      <form
+        action="http://localhost:3000/characters"
+        method="POST"
+        id="character-form"
+      >
+        <input type="text" name="characterName" id="characterName" />
+        <br />
+        <label for="characterName">Enter Character Name</label>
+        <br />
+        <input type="submit" id="submit" value="Begin!" />
+      </form>
     </div>
   </body>
 </html>
