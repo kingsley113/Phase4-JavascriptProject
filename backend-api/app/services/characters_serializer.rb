@@ -4,16 +4,15 @@ class CharactersSerializer
 	end
 
 	def to_serialized_json
-		@character.to_json(
-		# add json filters here
-		include: {
-			name:,
-			responses: {
-				only: [:response, :question_id]
-			},
-			except: [:updated_at, :created_at]
+		options = {
+			include: {
+				name:,
+				responses: {
+					only: [:response, :question_id]
+				},
+				except: [:updated_at, :created_at]
+			}
 		}
-		)
+	@character.to_json(options)
 	end
-	
 end
