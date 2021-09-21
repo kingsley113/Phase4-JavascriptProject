@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   );
   responseTextCollection = document.querySelectorAll(".response");
 
-  console.log("DOM fully loaded.");
+  // console.log("DOM fully loaded.");
   initialize();
 });
 
@@ -145,11 +145,9 @@ function submitResponse(number) {
   // );
 
   const formData = {
-    response: {
-      character_id: currentCharacter.id(),
-      question_id: currentCharacter.currentQuestionNo,
-      response: number,
-    },
+    character_id: currentCharacter.id(),
+    question_id: currentCharacter.currentQuestionNo(),
+    response: number,
   };
 
   const configurationObject = {
@@ -158,7 +156,7 @@ function submitResponse(number) {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify({ formData }),
+    body: JSON.stringify({ response: formData }),
   };
 
   fetch("http://localhost:3000/responses", configurationObject)
@@ -167,7 +165,8 @@ function submitResponse(number) {
     })
     // Recieve confirmation back from server
     .then(function (object) {
-      // updateCharacter.call(object); TODO:
+      updateCharacter.call(object);
+      console.log("good response from server");
     })
     .catch(function (error) {
       console.log(error.message);
@@ -175,6 +174,12 @@ function submitResponse(number) {
     });
 }
 // Update questions answered & response phrases for character
+
+function updateCharacter() {
+  console.log(this);
+  // update phrase
+  // update current question
+}
 // check if all 6 questions have been answered (questions answered = 6)
 // if yes, trigger end page
 // if no, fetch next question

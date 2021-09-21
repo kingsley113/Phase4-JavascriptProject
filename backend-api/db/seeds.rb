@@ -10,17 +10,17 @@
 question1 = Question.new 
 question1.question = "When you gaze into the mirror, you see.."
 question1.answer1 = "A towering giant."
-question1.phrase1 = ""
+question1.phrase1 = "This is phrase 1"
 question1.answer2 = "A powerful sorcerer."
-question1.phrase2 = ""
+question1.phrase2 = "This is phrase 2"
 question1.answer3 = "A strong fighter."
-question1.phrase3 = ""
+question1.phrase3 = "This is phrase 3"
 question1.answer4 = "A small nimble elf."
-question1.phrase4 = ""
+question1.phrase4 = "This is phrase 4"
 question1.answer5 = "A wicked barbarian."
-question1.phrase5 = ""
+question1.phrase5 = "This is phrase 5"
 question1.answer6 = "A hearty ork."
-question1.phrase6 = ""
+question1.phrase6 = "This is phrase 6"
 question1.save
 
 question2 = Question.new 

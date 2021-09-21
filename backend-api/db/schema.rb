@@ -14,6 +14,12 @@ ActiveRecord::Schema.define(version: 2021_09_20_025447) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
+    t.string "trait1"
+    t.string "trait2"
+    t.string "trait3"
+    t.string "trait4"
+    t.string "trait5"
+    t.string "trait6"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
