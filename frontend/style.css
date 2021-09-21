@@ -170,9 +170,8 @@ body {
   transform: scale(1.2);
 }
 
-/* https:;//commons.wikimedia.org/wiki/File:Dice-1.svg */
-/* https:;//commons.wikimedia.org/wiki/File:Dice-2.svg */
-/* https:;//commons.wikimedia.org/wiki/File:Dice-3.svg */
-/* https:;//commons.wikimedia.org/wiki/File:Dice-4.svg */
-/* https:;//commons.wikimedia.org/wiki/File:Dice-5.svg */
-/* https:;//commons.wikimedia.org/wiki/File:Dice-6.svg */
+/* Results Page Styles */
+
+#result-title {
+  padding-top: max(300px, 25vh);
+}

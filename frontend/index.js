@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   questionContainer = document.getElementById("question-container");
   questionText = document.getElementById("question");
   dice = document.getElementById("dice");
+  resultsContainer = document.getElementById("results-container");
 
   responseContainerCollection = document.querySelectorAll(
     ".response-container"
@@ -110,8 +111,9 @@ function renderQuestion(questionObject) {
 
   // Create Question element
   questionText.textContent = questionObject.question;
-  questionContainer.classList.add("visible");
-  questionContainer.classList.remove("hidden");
+  // questionContainer.classList.add("visible");
+  // questionContainer.classList.remove("hidden");
+  questionContainer.classList.toggle("visible", "hidden");
 
   dice.addEventListener("click", rollDice);
 
@@ -140,6 +142,7 @@ function rollDice() {
 
 // When selected send fetch request to sever with question_id, character_id, & response #
 function submitResponse(number) {
+  // add blurry overlay for loading screen? TODO: and to stop inadvertent clicking
   // console.log(
   //   `Fake submitting response #${number} for question #${currentCharacter.currentQuestionNo()}, for the character: ${currentCharacter.name()}, id: ${currentCharacter.id()}`
   // );
@@ -188,6 +191,7 @@ function updateCharacter() {
     console.log(
       "All questions answered, this would go to the final screen now."
     );
+    renderFinalResults();
   } else {
     // TODO: Add animation for response selection
     fetchQuestion(currentCharacter.currentQuestionNo());
@@ -195,8 +199,14 @@ function updateCharacter() {
 }
 
 function renderFinalResults() {
+  console.log("rendering final results page");
   // Hide questions page
+  questionContainer.classList.remove("visible");
+  questionContainer.classList.add("hidden");
+  // questionContainer.classList.toggle("hidden", "visible");
   // Show final screen div
+  // resultsContainer.classList.add("visible");
+  resultsContainer.classList.toggle("visible", "hidden");
   // Animate through character phrases
   // Show 'start over' button
   // Show 'export text' button
