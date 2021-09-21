@@ -6,6 +6,7 @@ let characterForm;
 document.addEventListener("DOMContentLoaded", (event) => {
   startScreen = document.getElementById("start-screen");
   characterForm = document.getElementById("character-form");
+  questionContainer = document.getElementById("question-container");
   console.log("DOM fully loaded.");
   initialize();
 });
@@ -98,13 +99,24 @@ function renderQuestion(questionObject) {
   startScreen.classList.add("hidden");
   // Remove previous question elements TODO:
   // create 6 question elements, each one should have an id of 'question-response-x' this will determine the location on screen
+  // Create Question element
   console.log("Question: " + questionObject.question);
+  const question = document.createElement("h3");
+  question.setAttribute("id", "question");
+  question.innerHTML = questionObject.question;
+  questionContainer.appendChild(question);
+  questionContainer.classList.toggle("hidden");
+
+  // Iterate through and make 6 response elements
   for (let i = 1; i <= 6; i++) {
     console.log(questionObject[`answer${i}`]);
+
+    // create answer elements
+    // append question elements
   }
   // create center round thing element
+
   // show dice roller-thingy method in circle element, probably call another function to show this
-  // append question elements
 }
 
 // When selected send fetch request to sever with question_id, character_id, & response #

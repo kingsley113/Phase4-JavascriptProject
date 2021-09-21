@@ -70,6 +70,10 @@ body {
 }
 
 /* Question Responses */
+#question {
+  padding-top: max(230px, 20vh);
+}
+
 #question-response-1 {
   position: absolute;
 }
