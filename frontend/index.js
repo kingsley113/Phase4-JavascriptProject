@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   characterForm = document.getElementById("character-form");
   questionContainer = document.getElementById("question-container");
   questionText = document.getElementById("question");
+  dice = document.getElementById("dice");
 
   responseContainerCollection = document.querySelectorAll(
     ".response-container"
@@ -57,6 +58,8 @@ function initialize() {
       submitResponse(i + 1);
     });
   }
+
+  dice.addEventListener("click", rollDice);
 }
 
 // Send Character name to create new character and trigger start of questions
@@ -114,7 +117,6 @@ function renderQuestion(questionObject) {
   // console.log("We are in the render question function!! :)");
   // hide title screen
   startScreen.classList.add("hidden");
-  // Remove previous question elements TODO: remove the event listeners
 
   // Create Question element
   // console.log("Question: " + questionObject.question);
@@ -140,3 +142,25 @@ function submitResponse(number) {
 // check if all 6 questions have been answered (questions answered = 6)
 // if yes, trigger end page
 // if no, fetch next question
+
+async function rollDice() {
+  // console.log("dice will begin rolling now");
+  let randNumber;
+  for (let i = 0.3; i < 3; i *= 1.05) {
+    randNumber = Math.ceil(Math.random() * 6);
+    let delay = i * 1000;
+    // console.log(delay);
+    (function (delay, randNumber) {
+      setTimeout(function () {
+        switchDiceImgSource(randNumber);
+      }, delay);
+    })(delay, randNumber);
+  }
+  setTimeout(function () {
+    submitResponse(randNumber);
+  }, 1000);
+}
+
+function switchDiceImgSource(number) {
+  dice.src = `public/images/dice-${number}.png`;
+}
