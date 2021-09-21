@@ -96,14 +96,11 @@ body {
 .response-container {
   width: 250px;
   height: 120px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
-
-  /* border: 20px double rgb(131, 88, 38);
-  border-radius: 10px; */
 
   background-image: url("public/images/response-border.png");
-  /* background-repeat: no-repeat; */
   background-size: cover;
   background-position: center;
 }

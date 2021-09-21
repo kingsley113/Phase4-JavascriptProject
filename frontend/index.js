@@ -101,7 +101,7 @@ function renderQuestion(questionObject) {
   // create 6 question elements, each one should have an id of 'question-response-x' this will determine the location on screen
   // Create Question element
   console.log("Question: " + questionObject.question);
-  const question = document.createElement("h3");
+  const question = document.createElement("h2");
   question.innerHTML = questionObject.question;
   question.setAttribute("id", "question");
   questionContainer.appendChild(question);
@@ -115,7 +115,11 @@ function renderQuestion(questionObject) {
     // create answer elements
     const responseContainer = document.createElement("div");
     responseContainer.classList.add("response-container");
-    responseContainer.innerHTML = questionObject[`answer${i}`];
+
+    const respText = document.createElement("p");
+    respText.innerHTML = questionObject[`answer${i}`];
+
+    responseContainer.appendChild(respText);
     responseContainer.setAttribute("id", `question-response-${i}`);
     // append question elements
     questionContainer.appendChild(responseContainer);
