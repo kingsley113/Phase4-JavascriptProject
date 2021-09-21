@@ -7,16 +7,24 @@ class CharactersController < ApplicationController
 	end
 	
 	def create 
-		character = Character.new
-		character.name = params[:name]
-		character.save
-		redirect_to character 
-		# fix this part TODO:
+		character = Character.new(character_params)
+		# character.name = params[:name]
+		if character.save
+			render json: character, status: :created
+		else
+			render json: character.errors, status: :unprocessable_entity 
+		end
 	end
 
 	def show
 		character = Character.find(params[:id])
 		render json: CharactersSerializer.new(character).to_serialized_json
+	end
+
+	private
+
+	def character_params 
+		params.require(:book).permit(:name)
 	end
 
 end

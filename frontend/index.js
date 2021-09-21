@@ -66,7 +66,8 @@ function submitCharacter(characterName) {
       console.log(object);
       // do something with this success return object TODO:
       // show first question
-      createCharacter(object);
+      console.log(object);
+      // createCharacter(object);
       fetchQuestion(currentCharacter.currentQuestionNo());
     })
     .catch(function (error) {
