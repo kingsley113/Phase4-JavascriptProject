@@ -166,7 +166,7 @@ function submitResponse(number) {
     // Recieve confirmation back from server
     .then(function (object) {
       updateCharacter.call(object);
-      console.log("good response from server");
+      // console.log("good response from server");
     })
     .catch(function (error) {
       console.log(error.message);
@@ -176,10 +176,28 @@ function submitResponse(number) {
 // Update questions answered & response phrases for character
 
 function updateCharacter() {
-  console.log(this);
+  // console.log(this);
   // update phrase
+  currentCharacter.responsePhrases[currentCharacter.questionsAnswered] =
+    this.character[`trait${currentCharacter.questionsAnswered + 1}`];
   // update current question
+  currentCharacter.questionsAnswered += 1;
+
+  if (currentCharacter.questionsAnswered === 6) {
+    // call final screen function TODO:
+    console.log(
+      "All questions answered, this would go to the final screen now."
+    );
+  } else {
+    // TODO: Add animation for response selection
+    fetchQuestion(currentCharacter.currentQuestionNo());
+  }
 }
-// check if all 6 questions have been answered (questions answered = 6)
-// if yes, trigger end page
-// if no, fetch next question
+
+function renderFinalResults() {
+  // Hide questions page
+  // Show final screen div
+  // Animate through character phrases
+  // Show 'start over' button
+  // Show 'export text' button
+}
