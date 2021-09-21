@@ -2,11 +2,20 @@
 let startScreen;
 let characterForm;
 
+let responseTextCollection;
+
 // Set page elements on DOM load
 document.addEventListener("DOMContentLoaded", (event) => {
   startScreen = document.getElementById("start-screen");
   characterForm = document.getElementById("character-form");
   questionContainer = document.getElementById("question-container");
+  questionText = document.getElementById("question");
+
+  responseContainerCollection = document.querySelectorAll(
+    ".response-container"
+  );
+  responseTextCollection = document.querySelectorAll(".response");
+
   console.log("DOM fully loaded.");
   initialize();
 });
@@ -94,39 +103,30 @@ async function fetchQuestion(questionNumber) {
 function renderQuestion(questionObject) {
   console.log(questionObject);
   console.log("We are in the render question function!! :)");
-  // Finally the DOM manipulation!!!!
   // hide title screen
   startScreen.classList.add("hidden");
-  // Remove previous question elements TODO:
-  // create 6 question elements, each one should have an id of 'question-response-x' this will determine the location on screen
+  // Remove previous question elements TODO: remove the event listeners
+
   // Create Question element
   console.log("Question: " + questionObject.question);
-  const question = document.createElement("h2");
-  question.innerHTML = questionObject.question;
-  question.setAttribute("id", "question");
-  questionContainer.appendChild(question);
+  questionText.textContent = questionObject.question;
   questionContainer.classList.add("visible");
   questionContainer.classList.remove("hidden");
 
   // Iterate through and make 6 response elements
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 0; i < 6; i++) {
     console.log(questionObject[`answer${i}`]);
+    responseTextCollection[i].textContent = questionObject[`answer${i + 1}`];
 
-    // create answer elements
-    const responseContainer = document.createElement("div");
-    responseContainer.classList.add("response-container");
-
-    const respText = document.createElement("p");
-    respText.innerHTML = questionObject[`answer${i}`];
-
-    responseContainer.appendChild(respText);
-    responseContainer.setAttribute("id", `question-response-${i}`);
-    // append question elements
-    questionContainer.appendChild(responseContainer);
+    // TODO: add event listeners to response buttons
+    responseContainerCollection[i].addEventListener("click", (event) => {
+      console.log(
+        `Response ${
+          i + 1
+        } was selected. This would now send the answer to the API`
+      );
+    });
   }
-  // create center round thing element
-
-  // show dice roller-thingy method in circle element, probably call another function to show this
 }
 
 // When selected send fetch request to sever with question_id, character_id, & response #
