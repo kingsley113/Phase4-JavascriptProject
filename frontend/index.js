@@ -63,11 +63,9 @@ function submitCharacter(characterName) {
       return response.json();
     })
     .then(function (object) {
-      // do something with this success return object TODO:
-      // show first question
       console.log("Good response from server, lets make a JS character!");
       createCharacter.call(object);
-      showQuestion(currentCharacter.currentQuestionNo());
+      fetchQuestion(currentCharacter.currentQuestionNo());
     })
     .catch(function (error) {
       console.log(error.message);
@@ -75,28 +73,15 @@ function submitCharacter(characterName) {
     });
 }
 
-function showQuestion(questionNumber) {
-  const question = fetchQuestion(questionNumber);
-  renderQuestion(question);
-}
-
 // Fetch question - pass in current question # requested
 async function fetchQuestion(questionNumber) {
-  const configurationObject = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({ questionNumber }),
-  };
-
-  await fetch("http://localhost:3000/characters", configurationObject)
+  await fetch(`http://localhost:3000/questions/${questionNumber}`)
     .then(function (response) {
       return response.json();
     })
     .then(function (object) {
-      return object;
+      // console.log(object);
+      renderQuestion(object);
     })
     .catch(function (error) {
       alert("Go back, we messed up and cant find this question!");
@@ -106,12 +91,17 @@ async function fetchQuestion(questionNumber) {
 
 // Render question on screen, adding event listener to each selection
 function renderQuestion(questionObject) {
+  console.log(questionObject);
+  console.log("We are in the render question function!! :)");
   // Finally the DOM manipulation!!!!
   // hide title screen
   startScreen.classList.add("hidden");
-  // Remove previous question elements
+  // Remove previous question elements TODO:
   // create 6 question elements, each one should have an id of 'question-response-x' this will determine the location on screen
-  // for (const answer of questionObject.responses) {  }
+  console.log("Question: " + questionObject.question);
+  for (let i = 1; i <= 6; i++) {
+    console.log(questionObject[`answer${i}`]);
+  }
   // create center round thing element
   // show dice roller-thingy method in circle element, probably call another function to show this
   // append question elements
