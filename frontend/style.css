@@ -66,15 +66,15 @@ body {
   left: 0;
 }
 
-#start-screen {
-  /* display: flex;
+/* #start-screen {
+  display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: flex-start;
-  text-align: center; */
-  /* border: 1px; */
-  /* border-style: solid; */
-}
+  text-align: center;
+  border: 1px;
+  border-style: solid;
+} */
 
 #start-title {
   padding-top: max(230px, 20vh);
@@ -90,7 +90,7 @@ body {
 
 /* Question Responses */
 #question {
-  padding-top: max(350px, 30vh);
+  padding-top: max(300px, 25vh);
 }
 
 .response-container {
@@ -110,31 +110,31 @@ body {
 
 #question-response-1 {
   position: absolute;
-  top: 300px;
-  left: 300px;
+  top: 40%;
+  left: calc(40% - 125px);
 }
 #question-response-2 {
   position: absolute;
-  top: 300px;
-  left: 500px;
+  top: 40%;
+  left: calc(60% - 125px);
 }
 #question-response-3 {
   position: absolute;
-  top: 500px;
-  left: 300px;
+  top: 55%;
+  left: calc(65% - 125px);
 }
 #question-response-4 {
   position: absolute;
-  top: 500px;
-  left: 500px;
+  top: 70%;
+  left: calc(60% - 125px);
 }
 #question-response-5 {
   position: absolute;
-  top: 700px;
-  left: 300px;
+  top: 70%;
+  left: calc(40% - 125px);
 }
 #question-response-6 {
   position: absolute;
-  top: 700px;
-  left: 500px;
+  top: 55%;
+  left: calc(35% - 125px);
 }
