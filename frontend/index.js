@@ -203,11 +203,20 @@ function renderFinalResults() {
   // Hide questions page
   questionContainer.classList.remove("visible");
   questionContainer.classList.add("hidden");
-  // questionContainer.classList.toggle("hidden", "visible");
   // Show final screen div
-  // resultsContainer.classList.add("visible");
   resultsContainer.classList.toggle("visible", "hidden");
   // Animate through character phrases
+  for (let i = 1; i <= 6; i++) {
+    const traitEl = document.getElementById(`trait${i}`);
+    setTimeout(function () {
+      traitEl.innerText =
+        currentCharacter.responsePhrases[i - 1] +
+        `This is placeholder filler for story trait ${i}`;
+      traitEl.classList.remove("hidden");
+      traitEl.classList.add("visible");
+    }, i * 1000);
+  }
   // Show 'start over' button
+
   // Show 'export text' button
 }
