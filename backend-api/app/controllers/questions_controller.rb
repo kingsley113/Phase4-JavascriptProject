@@ -5,5 +5,6 @@ class QuestionsController < ApplicationController
 		question = Question.find(params[:id])
 		render json: question
 			# add options here to filter out unnessecary attributes
+			# remove created and updated times
 	end
 end

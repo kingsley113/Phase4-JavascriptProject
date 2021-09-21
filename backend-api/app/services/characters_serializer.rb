@@ -6,12 +6,9 @@ class CharactersSerializer
 	def to_serialized_json
 		options = {
 			include: {
-				name:,
-				responses: {
-					only: [:response, :question_id]
-				},
-				except: [:updated_at, :created_at]
-			}
+				responses: {:only => [:response, :question_id]},
+			},
+			except: [:updated_at, :created_at]
 		}
 	@character.to_json(options)
 	end
