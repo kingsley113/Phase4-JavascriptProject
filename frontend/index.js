@@ -30,15 +30,12 @@ class Character {
       (this.questionsAnswered = questionsAnswered),
       (this.responsePhrases = []);
   }
-
   currentQuestionNo() {
     return this.questionsAnswered + 1;
   }
-
   id() {
     return this._id;
   }
-
   name() {
     return this._name;
   }
@@ -143,11 +140,40 @@ function rollDice() {
 
 // When selected send fetch request to sever with question_id, character_id, & response #
 function submitResponse(number) {
-  console.log(
-    `Fake submitting response #${number} for question #${currentCharacter.currentQuestionNo()}, for the character: ${currentCharacter.name()}, id: ${currentCharacter.id()}`
-  );
+  // console.log(
+  //   `Fake submitting response #${number} for question #${currentCharacter.currentQuestionNo()}, for the character: ${currentCharacter.name()}, id: ${currentCharacter.id()}`
+  // );
+
+  const formData = {
+    response: {
+      character_id: currentCharacter.id(),
+      question_id: currentCharacter.currentQuestionNo,
+      response: number,
+    },
+  };
+
+  const configurationObject = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ formData }),
+  };
+
+  fetch("http://localhost:3000/responses", configurationObject)
+    .then(function (response) {
+      return response.json();
+    })
+    // Recieve confirmation back from server
+    .then(function (object) {
+      // updateCharacter.call(object); TODO:
+    })
+    .catch(function (error) {
+      console.log(error.message);
+      alert("An error in the witchcraft occured! Try again.");
+    });
 }
-// Recieve confirmation back from server
 // Update questions answered & response phrases for character
 // check if all 6 questions have been answered (questions answered = 6)
 // if yes, trigger end page

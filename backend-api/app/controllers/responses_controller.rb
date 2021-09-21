@@ -6,10 +6,19 @@ class ResponsesController < ApplicationController
 
 	def create
 		# Add code to create response and assign to user, saving question number 
-		response = Response.new
-		response.character_id = params[:character_id]
-		response.question_id = params[:question_id]
-		response.response = params[:response]
-		response.save
+		response = Response.new(response_params)
+		
+		if response.save
+			render json: response
+		else
+			render json: response.errors, status: :unprocessable_entity
+		end
 	end
+
+	private
+
+	def response_params() {
+		params.require(:response).permit(:character_id, :question_id, :response)
+	}
+
 end
