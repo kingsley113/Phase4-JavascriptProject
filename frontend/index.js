@@ -49,7 +49,7 @@ function initialize() {
   // Listen for Character form submit
   characterForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log("Form was submitted! Lets get this show on the road!");
+    // console.log("Form was submitted! Lets get this show on the road!");
     submitCharacter(characterForm.querySelector("#characterName").value);
   });
 
@@ -59,7 +59,7 @@ function initialize() {
     });
   }
 
-  dice.addEventListener("click", rollDice);
+  // dice.addEventListener("click", rollDice);
 }
 
 // Send Character name to create new character and trigger start of questions
@@ -80,7 +80,7 @@ function submitCharacter(characterName) {
       return response.json();
     })
     .then(function (object) {
-      console.log("Good response from server, lets make a JS character!");
+      // console.log("Good response from server, lets make a JS character!");
       createCharacter.call(object);
       fetchQuestion(currentCharacter.currentQuestionNo());
     })
@@ -124,6 +124,8 @@ function renderQuestion(questionObject) {
   questionContainer.classList.add("visible");
   questionContainer.classList.remove("hidden");
 
+  dice.addEventListener("click", rollDice);
+
   // Iterate through and make 6 response elements
   for (let i = 0; i < 6; i++) {
     // console.log(questionObject[`answer${i}`]);
@@ -143,7 +145,8 @@ function submitResponse(number) {
 // if yes, trigger end page
 // if no, fetch next question
 
-async function rollDice() {
+function rollDice() {
+  dice.removeEventListener("click", rollDice);
   // console.log("dice will begin rolling now");
   let randNumber;
   for (let i = 0.3; i < 3; i *= 1.05) {
@@ -152,13 +155,14 @@ async function rollDice() {
     // console.log(delay);
     (function (delay, randNumber) {
       setTimeout(function () {
-        switchDiceImgSource(randNumber);
+        // switchDiceImgSource(randNumber);
+        dice.src = `public/images/dice-${randNumber}.png`;
       }, delay);
     })(delay, randNumber);
   }
   setTimeout(function () {
     submitResponse(randNumber);
-  }, 1000);
+  }, 4000);
 }
 
 function switchDiceImgSource(number) {
