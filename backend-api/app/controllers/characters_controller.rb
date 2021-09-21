@@ -10,7 +10,7 @@ class CharactersController < ApplicationController
 		character = Character.new(character_params)
 		# character.name = params[:name]
 		if character.save
-			render json: character, status: :created
+			render json: character #, status: :created
 		else
 			render json: character.errors, status: :unprocessable_entity 
 		end
@@ -24,7 +24,7 @@ class CharactersController < ApplicationController
 	private
 
 	def character_params 
-		params.require(:book).permit(:name)
+		params.require(:character).permit(:name)
 	end
 
 end

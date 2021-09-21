@@ -55,7 +55,7 @@ function submitCharacter(characterName) {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify({ formData }),
+    body: JSON.stringify({ character: formData }),
   };
 
   fetch("http://localhost:3000/characters", configurationObject)
@@ -63,16 +63,15 @@ function submitCharacter(characterName) {
       return response.json();
     })
     .then(function (object) {
-      console.log(object);
       // do something with this success return object TODO:
       // show first question
-      console.log(object);
       // createCharacter(object);
-      fetchQuestion(currentCharacter.currentQuestionNo());
+      // fetchQuestion(currentCharacter.currentQuestionNo());
+      // Figure out refreshing thing!!! TODO: TODO: TODO:
     })
     .catch(function (error) {
-      alert("An error in the witchcraft occured!");
       console.log(error.message);
+      alert("An error in the witchcraft occured! Try again.");
     });
 }
 
