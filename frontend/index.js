@@ -38,7 +38,7 @@ class Character {
   }
 }
 
-// Event Listeners
+// Initialize
 function initialize() {
   // Listen for Character form submit
   characterForm.addEventListener("submit", (event) => {
@@ -47,6 +47,18 @@ function initialize() {
     // console.log(characterForm.querySelector("#characterName").value);
     submitCharacter(characterForm.querySelector("#characterName").value);
   });
+
+  for (let i = 0; i < 6; i++) {
+    responseContainerCollection[i].addEventListener("click", (event) => {
+      // console.log(
+      //   `Response ${
+      //     i + 1
+      //   } was selected.`
+      // 	);
+      // Call 'submitResponse(i + 1) or something like this, that function will trigger the submit animation
+      submitResponse(i + 1);
+    });
+  }
 }
 
 function createCharacter() {
@@ -117,19 +129,15 @@ function renderQuestion(questionObject) {
   for (let i = 0; i < 6; i++) {
     console.log(questionObject[`answer${i}`]);
     responseTextCollection[i].textContent = questionObject[`answer${i + 1}`];
-
-    // TODO: add event listeners to response buttons
-    responseContainerCollection[i].addEventListener("click", (event) => {
-      console.log(
-        `Response ${
-          i + 1
-        } was selected. This would now send the answer to the API`
-      );
-    });
   }
 }
 
 // When selected send fetch request to sever with question_id, character_id, & response #
+function submitResponse(number) {
+  console.log(
+    `Fake submitting response #${number} for question #${currentCharacter.currentQuestionNo()}`
+  );
+}
 // Recieve confirmation back from server
 // Update questions answered & response phrases for character
 // check if all 6 questions have been answered (questions answered = 6)
