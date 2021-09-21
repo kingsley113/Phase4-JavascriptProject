@@ -173,5 +173,26 @@ body {
 /* Results Page Styles */
 
 #result-title {
-  padding-top: max(300px, 25vh);
+  position: absolute;
+  top: calc(50% - 300px);
+  left: calc(50% - 200px);
+  width: 400px;
+  height: 40px;
+  /* padding-top: 25vh; */
+  border: 1px solid;
+}
+
+#story-container {
+  position: absolute;
+  top: calc(50% - 200px);
+  left: calc(50% - 250px);
+
+  width: 500px;
+  height: 500px;
+  display: block;
+  /* flex-direction: column; */
+  justify-content: left;
+  text-align: left;
+
+  border: 1px solid;
 }

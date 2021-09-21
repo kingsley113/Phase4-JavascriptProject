@@ -211,10 +211,10 @@ function renderFinalResults() {
     setTimeout(function () {
       traitEl.innerText =
         currentCharacter.responsePhrases[i - 1] +
-        `This is placeholder filler for story trait ${i}`;
+        ` This is placeholder filler for story trait ${i}. `;
       traitEl.classList.remove("hidden");
       traitEl.classList.add("visible");
-    }, i * 1000);
+    }, i * 2000);
   }
   // Show 'start over' button
 
