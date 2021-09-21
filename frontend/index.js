@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 // Declare global variables
 let currentCharacter;
-let currentQuestion = 0;
+// let currentQuestion = 0;
 
 // Declare Object Classes
 class Character {
@@ -65,14 +65,19 @@ function submitCharacter(characterName) {
     .then(function (object) {
       // do something with this success return object TODO:
       // show first question
-      // createCharacter(object);
-      // fetchQuestion(currentCharacter.currentQuestionNo());
-      // Figure out refreshing thing!!! TODO: TODO: TODO:
+      console.log("Good response from server, lets make a JS character!");
+      createCharacter.call(object);
+      showQuestion(currentCharacter.currentQuestionNo());
     })
     .catch(function (error) {
       console.log(error.message);
       alert("An error in the witchcraft occured! Try again.");
     });
+}
+
+function showQuestion(questionNumber) {
+  const question = fetchQuestion(questionNumber);
+  renderQuestion(question);
 }
 
 // Fetch question - pass in current question # requested
@@ -91,8 +96,7 @@ async function fetchQuestion(questionNumber) {
       return response.json();
     })
     .then(function (object) {
-      // Recieve question object - done
-      renderQuestion(object);
+      return object;
     })
     .catch(function (error) {
       alert("Go back, we messed up and cant find this question!");
