@@ -150,10 +150,19 @@ body {
 
 #shield {
   position: absolute;
-  top: max(51%, 630px);
+  top: max(51%, 585px);
   left: calc(50% - 110px);
   width: 220px;
   height: 220px;
+}
+
+#dice {
+  position: absolute;
+  top: max(56.5%, 655px);
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  /* fill: white; */
 }
 
 /* https:;//commons.wikimedia.org/wiki/File:Dice-1.svg */
