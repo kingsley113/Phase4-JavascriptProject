@@ -49,7 +49,6 @@ function initialize() {
   // Listen for Character form submit
   characterForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    // console.log("Form was submitted! Lets get this show on the road!");
     submitCharacter(characterForm.querySelector("#characterName").value);
   });
 
@@ -58,8 +57,6 @@ function initialize() {
       submitResponse(i + 1);
     });
   }
-
-  // dice.addEventListener("click", rollDice);
 }
 
 // Send Character name to create new character and trigger start of questions
@@ -92,7 +89,6 @@ function submitCharacter(characterName) {
 
 function createCharacter() {
   currentCharacter = new Character(this.name, this.id, 0);
-  // console.log(currentCharacter);
 }
 
 // Fetch question - pass in current question # requested
@@ -102,7 +98,6 @@ async function fetchQuestion(questionNumber) {
       return response.json();
     })
     .then(function (object) {
-      // console.log(object);
       renderQuestion(object);
     })
     .catch(function (error) {
@@ -111,26 +106,39 @@ async function fetchQuestion(questionNumber) {
     });
 }
 
-// Render question on screen, adding event listener to each selection
+// Render question
 function renderQuestion(questionObject) {
-  // console.log(questionObject);
-  // console.log("We are in the render question function!! :)");
   // hide title screen
   startScreen.classList.add("hidden");
 
   // Create Question element
-  // console.log("Question: " + questionObject.question);
   questionText.textContent = questionObject.question;
   questionContainer.classList.add("visible");
   questionContainer.classList.remove("hidden");
 
   dice.addEventListener("click", rollDice);
 
-  // Iterate through and make 6 response elements
+  // Iterate through and update the 6 response elements
   for (let i = 0; i < 6; i++) {
-    // console.log(questionObject[`answer${i}`]);
     responseTextCollection[i].textContent = questionObject[`answer${i + 1}`];
   }
+}
+
+function rollDice() {
+  dice.removeEventListener("click", rollDice);
+  let randNumber;
+  for (let i = 0.3; i < 3; i *= 1.05) {
+    randNumber = Math.ceil(Math.random() * 6);
+    let delay = i * 1000;
+    (function (delay, randNumber) {
+      setTimeout(function () {
+        dice.src = `public/images/dice-${randNumber}.png`;
+      }, delay);
+    })(delay, randNumber);
+  }
+  setTimeout(function () {
+    submitResponse(randNumber);
+  }, 4000);
 }
 
 // When selected send fetch request to sever with question_id, character_id, & response #
@@ -144,27 +152,3 @@ function submitResponse(number) {
 // check if all 6 questions have been answered (questions answered = 6)
 // if yes, trigger end page
 // if no, fetch next question
-
-function rollDice() {
-  dice.removeEventListener("click", rollDice);
-  // console.log("dice will begin rolling now");
-  let randNumber;
-  for (let i = 0.3; i < 3; i *= 1.05) {
-    randNumber = Math.ceil(Math.random() * 6);
-    let delay = i * 1000;
-    // console.log(delay);
-    (function (delay, randNumber) {
-      setTimeout(function () {
-        // switchDiceImgSource(randNumber);
-        dice.src = `public/images/dice-${randNumber}.png`;
-      }, delay);
-    })(delay, randNumber);
-  }
-  setTimeout(function () {
-    submitResponse(randNumber);
-  }, 4000);
-}
-
-function switchDiceImgSource(number) {
-  dice.src = `public/images/dice-${number}.png`;
-}
