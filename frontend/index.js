@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   startScreen = document.getElementById("start-screen");
   characterForm = document.getElementById("character-form");
   console.log("DOM fully loaded.");
+  initialize();
 });
 
 // Declare global variables
@@ -27,6 +28,17 @@ class Character {
   }
 }
 
+// Event Listeners
+function initialize() {
+  // Listen for Character form submit
+  characterForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    console.log("Form was submitted! Lets get this show on the road!");
+    // console.log(characterForm.querySelector("#characterName").value);
+    submitCharacter(characterForm.querySelector("#characterName").value);
+  });
+}
+
 function createCharacter() {
   currentCharacter = new Character(this.name, this.id, 0);
   // This will need some work to get the right info out of the object TODO:
@@ -35,7 +47,7 @@ function createCharacter() {
 
 // Send Character name to create new character and trigger start of questions
 function submitCharacter(characterName) {
-  const formData = { characterName: characterName };
+  const formData = { name: characterName };
 
   const configurationObject = {
     method: "POST",
