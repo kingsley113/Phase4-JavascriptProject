@@ -47,12 +47,31 @@ body {
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
-#start-screen {
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+
+.content-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100%;
   justify-content: flex-start;
   text-align: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#start-screen {
+  /* display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-start;
+  text-align: center; */
   /* border: 1px; */
   /* border-style: solid; */
 }
@@ -71,24 +90,51 @@ body {
 
 /* Question Responses */
 #question {
-  padding-top: max(230px, 20vh);
+  padding-top: max(350px, 30vh);
+}
+
+.response-container {
+  width: 250px;
+  height: 120px;
+  justify-content: center;
+  text-align: center;
+
+  /* border: 20px double rgb(131, 88, 38);
+  border-radius: 10px; */
+
+  background-image: url("public/images/response-border.png");
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  background-position: center;
 }
 
 #question-response-1 {
   position: absolute;
+  top: 300px;
+  left: 300px;
 }
 #question-response-2 {
   position: absolute;
+  top: 300px;
+  left: 500px;
 }
 #question-response-3 {
   position: absolute;
+  top: 500px;
+  left: 300px;
 }
 #question-response-4 {
   position: absolute;
+  top: 500px;
+  left: 500px;
 }
 #question-response-5 {
   position: absolute;
+  top: 700px;
+  left: 300px;
 }
 #question-response-6 {
   position: absolute;
+  top: 700px;
+  left: 500px;
 }

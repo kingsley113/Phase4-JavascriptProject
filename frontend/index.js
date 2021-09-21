@@ -102,17 +102,23 @@ function renderQuestion(questionObject) {
   // Create Question element
   console.log("Question: " + questionObject.question);
   const question = document.createElement("h3");
-  question.setAttribute("id", "question");
   question.innerHTML = questionObject.question;
+  question.setAttribute("id", "question");
   questionContainer.appendChild(question);
-  questionContainer.classList.toggle("hidden");
+  questionContainer.classList.add("visible");
+  questionContainer.classList.remove("hidden");
 
   // Iterate through and make 6 response elements
   for (let i = 1; i <= 6; i++) {
     console.log(questionObject[`answer${i}`]);
 
     // create answer elements
+    const responseContainer = document.createElement("div");
+    responseContainer.classList.add("response-container");
+    responseContainer.innerHTML = questionObject[`answer${i}`];
+    responseContainer.setAttribute("id", `question-response-${i}`);
     // append question elements
+    questionContainer.appendChild(responseContainer);
   }
   // create center round thing element
 
