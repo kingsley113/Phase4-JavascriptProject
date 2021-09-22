@@ -241,6 +241,8 @@ function renderFinalResults() {
 
   // Show 'select existing character' button
   fetchExistingCharacters();
+
+  initializeLoadCharacterForm();
 }
 
 async function fetchExistingCharacters() {
@@ -263,6 +265,40 @@ function populateExistingCharactersDropdown(characters) {
   for (const character of characters) {
     let option = document.createElement("option");
     option.innerText = character.name;
+    option.value = character.id;
     dropdownMenu.appendChild(option);
   }
+}
+
+// TODO: make fetch of all characters only return name and id, no need for all info
+// on form submit, fetch single character
+// assign character as current character
+// re-render final page with new character info
+function initializeLoadCharacterForm() {
+  document
+    .getElementById("existing-character-form")
+    .addEventListener("submit", (event) => {
+      event.preventDefault();
+      // console.log(document.getElementById("select-character").value);
+      fetchExistingCharacter(document.getElementById("select-character").value);
+    });
+}
+
+async function fetchExistingCharacter(id) {
+  await fetch(`http://localhost:3000/characters/${id}`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (object) {
+      console.log("good resposne from existing characters request");
+      reloadCurrentCharacter(object);
+    })
+    .catch(function (error) {
+      alert("Go back, we messed up and cant get all the characters!");
+      console.log(error.message);
+    });
+}
+
+function reloadCurrentCharacter(characterObject) {
+  console.log(characterObject);
 }
