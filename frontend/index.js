@@ -239,5 +239,30 @@ function renderFinalResults() {
   }
   // Show 'start over' button
 
-  // Show 'export text' button
+  // Show 'select existing character' button
+  fetchExistingCharacters();
+}
+
+async function fetchExistingCharacters() {
+  await fetch(`http://localhost:3000/characters`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (object) {
+      console.log("good resposne from existing characters request");
+      populateExistingCharactersDropdown(object);
+    })
+    .catch(function (error) {
+      alert("Go back, we messed up and cant get all the characters!");
+      console.log(error.message);
+    });
+}
+
+function populateExistingCharactersDropdown(characters) {
+  const dropdownMenu = document.getElementById("select-character");
+  for (const character of characters) {
+    let option = document.createElement("option");
+    option.innerText = character.name;
+    dropdownMenu.appendChild(option);
+  }
 }
