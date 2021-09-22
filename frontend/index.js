@@ -144,10 +144,6 @@ function rollDice() {
 
 // When selected send fetch request to sever with question_id, character_id, & response #
 function submitResponse(number) {
-  // add blurry overlay for loading screen? TODO: and to stop inadvertent clicking
-  // console.log(
-  //   `Fake submitting response #${number} for question #${currentCharacter.currentQuestionNo()}, for the character: ${currentCharacter.name()}, id: ${currentCharacter.id()}`
-  // );
   // Hide response buttons one at at time between questions
   previousResponse = number;
   animateToggleResponseOptions(number);
@@ -171,10 +167,8 @@ function submitResponse(number) {
     .then(function (response) {
       return response.json();
     })
-    // Recieve confirmation back from server
     .then(function (object) {
       updateCharacter.call(object);
-      // console.log("good response from server");
     })
     .catch(function (error) {
       console.log(error.message);
@@ -185,7 +179,7 @@ function submitResponse(number) {
 function animateToggleResponseOptions(startingNumber) {
   let currentBox = startingNumber;
   for (let i = 1; i <= 6; i++) {
-    toggleResponseBox(currentBox, i * 100);
+    toggleResponseBox(currentBox, i * 120);
 
     if (currentBox === 6) {
       currentBox = 1;
@@ -198,14 +192,11 @@ function animateToggleResponseOptions(startingNumber) {
 function toggleResponseBox(number, delay) {
   setTimeout(function () {
     responseContainerCollection[number - 1].classList.toggle("hidden");
-    // responseContainerCollection[number - 1].classList.remove("visible");
   }, delay);
 }
 
 // Update questions answered & response phrases for character
-
 function updateCharacter() {
-  // console.log(this);
   // update phrase
   currentCharacter.responsePhrases[currentCharacter.questionsAnswered] =
     this.character[`trait${currentCharacter.questionsAnswered + 1}`];
@@ -217,7 +208,9 @@ function updateCharacter() {
     console.log(
       "All questions answered, this would go to the final screen now."
     );
-    renderFinalResults();
+    setTimeout(function () {
+      renderFinalResults();
+    }, 600);
   } else {
     // TODO: Add animation for response selection
     setTimeout(function () {
