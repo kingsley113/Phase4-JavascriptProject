@@ -204,15 +204,10 @@ function updateCharacter() {
   currentCharacter.questionsAnswered += 1;
 
   if (currentCharacter.questionsAnswered === 6) {
-    // call final screen function TODO:
-    console.log(
-      "All questions answered, this would go to the final screen now."
-    );
     setTimeout(function () {
       renderFinalResults();
     }, 600);
   } else {
-    // TODO: Add animation for response selection
     setTimeout(function () {
       fetchQuestion(currentCharacter.currentQuestionNo());
     }, 600);
@@ -244,11 +239,10 @@ function renderFinalResults() {
       traitEl.classList.add("visible");
     }, i * 2000);
   }
-  // Show 'start over' button
+  // Show 'start over' button TODO:
 
   // Show 'select existing character' button
   fetchExistingCharacters();
-
   initializeLoadCharacterForm();
 }
 
