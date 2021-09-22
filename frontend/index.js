@@ -313,3 +313,9 @@ function reloadCurrentCharacter(characterObject) {
   currentCharacter = newCharacter;
   renderFinalResults();
 }
+
+// TODO: Update styling of title page
+// TODO: Update styling of final page
+// TODO: Complete writing questions and phrases
+// TODO: Implement reset function
+// TODO: Implement music?
