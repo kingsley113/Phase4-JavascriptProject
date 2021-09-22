@@ -317,5 +317,6 @@ function reloadCurrentCharacter(characterObject) {
 // TODO: Update styling of title page
 // TODO: Update styling of final page
 // TODO: Complete writing questions and phrases
+// TODO: Update story text on final page
 // TODO: Implement reset function
 // TODO: Implement music?
