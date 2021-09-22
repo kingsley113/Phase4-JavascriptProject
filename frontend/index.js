@@ -3,7 +3,7 @@ let currentCharacter;
 let startScreen;
 let characterForm;
 let responseTextCollection;
-
+let previousResponse = 1;
 // Identify page elements
 // Set page elements on DOM load
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -44,6 +44,7 @@ class Character {
 
 // Initialize
 function initialize() {
+  previousResponse = 1;
   // Listen for Character form submit
   characterForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -114,6 +115,7 @@ function renderQuestion(questionObject) {
   // questionContainer.classList.add("visible");
   // questionContainer.classList.remove("hidden");
   questionContainer.classList.toggle("visible", "hidden");
+  animateToggleResponseOptions(previousResponse);
 
   dice.addEventListener("click", rollDice);
 
@@ -147,7 +149,8 @@ function submitResponse(number) {
   //   `Fake submitting response #${number} for question #${currentCharacter.currentQuestionNo()}, for the character: ${currentCharacter.name()}, id: ${currentCharacter.id()}`
   // );
   // Hide response buttons one at at time between questions
-  animateHideResponseOptions(number);
+  previousResponse = number;
+  animateToggleResponseOptions(number);
 
   const formData = {
     character_id: currentCharacter.id(),
@@ -179,10 +182,10 @@ function submitResponse(number) {
     });
 }
 
-function animateHideResponseOptions(startingNumber) {
+function animateToggleResponseOptions(startingNumber) {
   let currentBox = startingNumber;
   for (let i = 1; i <= 6; i++) {
-    toggleResponseBox(currentBox, i * 150);
+    toggleResponseBox(currentBox, i * 100);
 
     if (currentBox === 6) {
       currentBox = 1;
@@ -219,7 +222,7 @@ function updateCharacter() {
     // TODO: Add animation for response selection
     setTimeout(function () {
       fetchQuestion(currentCharacter.currentQuestionNo());
-    }, 2000);
+    }, 600);
   }
 }
 
