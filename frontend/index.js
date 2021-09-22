@@ -146,7 +146,8 @@ function submitResponse(number) {
   // console.log(
   //   `Fake submitting response #${number} for question #${currentCharacter.currentQuestionNo()}, for the character: ${currentCharacter.name()}, id: ${currentCharacter.id()}`
   // );
-  // Remove event listener to prevent double clicking
+  // Hide response buttons one at at time between questions
+  animateHideResponseOptions(number);
 
   const formData = {
     character_id: currentCharacter.id(),
@@ -177,6 +178,27 @@ function submitResponse(number) {
       alert("An error in the witchcraft occured! Try again.");
     });
 }
+
+function animateHideResponseOptions(startingNumber) {
+  let currentBox = startingNumber;
+  for (let i = 1; i <= 6; i++) {
+    toggleResponseBox(currentBox, i * 150);
+
+    if (currentBox === 6) {
+      currentBox = 1;
+    } else {
+      currentBox += 1;
+    }
+  }
+}
+
+function toggleResponseBox(number, delay) {
+  setTimeout(function () {
+    responseContainerCollection[number - 1].classList.toggle("hidden");
+    // responseContainerCollection[number - 1].classList.remove("visible");
+  }, delay);
+}
+
 // Update questions answered & response phrases for character
 
 function updateCharacter() {
@@ -195,7 +217,9 @@ function updateCharacter() {
     renderFinalResults();
   } else {
     // TODO: Add animation for response selection
-    fetchQuestion(currentCharacter.currentQuestionNo());
+    setTimeout(function () {
+      fetchQuestion(currentCharacter.currentQuestionNo());
+    }, 2000);
   }
 }
 
