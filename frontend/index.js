@@ -146,6 +146,7 @@ function submitResponse(number) {
   // console.log(
   //   `Fake submitting response #${number} for question #${currentCharacter.currentQuestionNo()}, for the character: ${currentCharacter.name()}, id: ${currentCharacter.id()}`
   // );
+  // Remove event listener to prevent double clicking
 
   const formData = {
     character_id: currentCharacter.id(),
