@@ -15,13 +15,15 @@ body {
 
 #parchment-background {
   position: absolute;
-  height: 100%;
+  top: calc(50% - 573px);
+  left: calc(50% = 430px);
+  /* height: 100%; */
   /* Actual Size */
   /* min-height: 960px;
   min-width: 720px; */
   /* Desired Size */
-  min-height: 1146px;
-  min-width: 860px;
+  height: 1146px;
+  width: 860px;
 
   justify-self: center;
 }
@@ -77,20 +79,35 @@ body {
 } */
 
 #start-title {
-  padding-top: max(230px, 20vh);
+  position: absolute;
+  top: calc(50% - 300px);
+  left: calc(50% - 200px);
+
+  width: 400px;
+  /* height: 40px; */
   /* border: 1px;
   border-style: solid; */
 }
 
 #character-form {
-  padding-top: 150px;
+  position: absolute;
+  top: calc(50%);
+  left: calc(50% - 200px);
+  width: 400px;
+  /* padding-top: 150px; */
   /* border: 1px;
   border-style: solid; */
 }
 
 /* Question Responses */
 #question {
-  padding-top: max(300px, 25vh);
+  /* padding-top: max(300px, 25vh); */
+
+  position: absolute;
+  top: calc(50% - 300px);
+  left: calc(50% - 300px);
+
+  width: 600px;
 }
 
 .response-container {
@@ -113,44 +130,44 @@ body {
 
 #question-response-1 {
   position: absolute;
-  top: max(calc(55% - 170px), calc(630px - 170px));
+  top: calc(50% - 170px);
   /* left: calc(40% - 125px); */
   left: calc(50% - 265px);
 }
 #question-response-2 {
   position: absolute;
-  top: max(calc(55% - 170px), calc(630px - 170px));
+  top: calc(50% - 170px);
   /* left: calc(60% - 125px); */
   left: calc(50% + 15px);
 }
 #question-response-3 {
   position: absolute;
-  top: max(55%, 630px);
+  top: 50%;
   /* left: calc(65% - 125px); */
   left: calc(50% + 80px);
 }
 #question-response-4 {
   position: absolute;
-  top: max(calc(55% + 170px), calc(630px + 170px));
+  top: calc(50% + 170px);
   /* left: calc(60% - 125px); */
   left: calc(50% + 15px);
 }
 #question-response-5 {
   position: absolute;
-  top: max(calc(55% + 170px), calc(630px + 170px));
+  top: calc(50% + 170px);
   /* left: calc(40% - 125px); */
   left: calc(50% - 265px);
 }
 #question-response-6 {
   position: absolute;
-  top: max(55%, 630px);
+  top: 50%;
   /* left: calc(35% - 125px); */
   left: calc(50% - 330px);
 }
 
 #shield {
   position: absolute;
-  top: max(51%, 585px);
+  top: calc(50% - 55px);
   left: calc(50% - 110px);
   width: 220px;
   height: 220px;
@@ -158,7 +175,7 @@ body {
 
 #dice {
   position: absolute;
-  top: max(56.5%, 655px);
+  top: calc(50% + 15px);
   left: calc(50% - 40px);
   width: 80px;
   height: 80px;
