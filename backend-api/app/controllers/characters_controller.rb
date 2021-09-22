@@ -18,6 +18,7 @@ class CharactersController < ApplicationController
 
 	def show
 		character = Character.find(params[:id])
+		character.assignTraits
 		render json: CharactersSerializer.new(character).to_serialized_json
 	end
 
