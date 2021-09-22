@@ -221,6 +221,13 @@ function updateCharacter() {
 
 function renderFinalResults() {
   console.log("rendering final results page");
+  // Reset the story text, for when reloading a different character
+  for (let i = 1; i <= 6; i++) {
+    const traitEl = document.getElementById(`trait${i}`);
+    traitEl.innerText = "";
+    traitEl.classList.add("hidden");
+    traitEl.classList.remove("visible");
+  }
   // Hide questions page
   questionContainer.classList.remove("visible");
   questionContainer.classList.add("hidden");
@@ -301,4 +308,14 @@ async function fetchExistingCharacter(id) {
 
 function reloadCurrentCharacter(characterObject) {
   console.log(characterObject);
+  newCharacter = new Character();
+  newCharacter._name = characterObject.name;
+  newCharacter._id = characterObject.id;
+  newCharacter.questionsAnswered = 6;
+  for (let i = 0; i < 6; i++) {
+    newCharacter.responsePhrases[i] = characterObject[`trait${i + 1}`];
+  }
+  console.log(newCharacter);
+  currentCharacter = newCharacter;
+  renderFinalResults();
 }
