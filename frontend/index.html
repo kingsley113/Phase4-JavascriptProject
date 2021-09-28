@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dungeons & DonkeysTODO: change this</title>
+    <title>Who are you?</title>
     <script src="index.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,7 +16,8 @@
       />
     </div>
     <div class="content-container" id="start-screen">
-      <h1 id="start-title">This is the Title Screen</h1>
+      <h1 id="start-title">Who are you?</h1>
+			<h3 id="instructions">Enter your name to begin, then answer the questions or roll the dice to learn the story of where you came from.</h3>
       <form
         action="http://localhost:3000/characters"
         method="POST"
@@ -55,7 +56,7 @@
 		</div>
 
 		<div class="content-container hidden" id="results-container">
-			<h2 id="result-title">Cool Results Page Bro.</h2>
+			<h2 id="result-title"></h2>
 			<div id="story-container">
 				<span class="hidden" id="trait1"></span>
 				<span class="hidden" id="trait2"></span>

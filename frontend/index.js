@@ -228,12 +228,12 @@ function renderFinalResults() {
   questionContainer.classList.remove("visible");
   questionContainer.classList.add("hidden");
   // Show title of character
-  setTimeout(function () {
-    const resultTitle = document.getElementById("result-title");
-    resultTitle.innerText = currentCharacter.name() + ", who are you?";
-  }, 1000);
+  const resultTitle = document.getElementById("result-title");
+  resultTitle.innerText = currentCharacter.name() + ", who are you?";
   // Show final screen div
-  resultsContainer.classList.toggle("visible", "hidden");
+  setTimeout(function () {
+    resultsContainer.classList.toggle("visible", "hidden");
+  }, 500);
   // Animate through character phrases
   for (let i = 1; i <= 6; i++) {
     const traitEl = document.getElementById(`trait${i}`);
@@ -331,8 +331,3 @@ function initializeResetButton() {
     window.location.reload();
   });
 }
-
-// TODO: Update styling of title page
-// TODO: Update styling of final page
-// TODO: Implement music?
-// TODO: Fix timing of button animation

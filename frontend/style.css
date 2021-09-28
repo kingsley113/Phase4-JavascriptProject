@@ -1,15 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Yatra+One&display=swap");
 
 body {
-  /* background-image: url("public/images/background-parchment-seamless.jpg"); */
   background-image: url("public/images/fantasy-background.jpg");
   background-color: rgb(221, 177, 112);
   background-position: center;
   background-size: cover;
-  /* backdrop-filter: blur(10px); */
   background-attachment: fixed;
   font-family: "Yatra One", cursive;
-
   margin: 0px;
 }
 
@@ -17,11 +14,6 @@ body {
   position: absolute;
   top: calc(50% - 573px);
   left: calc(50% = 430px);
-  /* height: 100%; */
-  /* Actual Size */
-  /* min-height: 960px;
-  min-width: 720px; */
-  /* Desired Size */
   height: 1146px;
   width: 860px;
 
@@ -68,22 +60,11 @@ body {
   left: 0;
 }
 
-/* #start-screen {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: flex-start;
-  text-align: center;
-  border: 1px;
-  border-style: solid;
-} */
-
 /* Inputs styling */
 input[type="text"] {
   font: inherit;
   font-size: 16pt;
   border: 2px solid rgb(87, 44, 3);
-  /* border-bottom: 2px solid brown; */
   background: transparent;
   padding: 5px;
   border-radius: 3px;
@@ -91,13 +72,10 @@ input[type="text"] {
 }
 select {
   font: inherit;
-  /* font-size: 18pt; */
   border: 2px solid rgb(87, 44, 3);
-  /* border-bottom: 2px solid brown; */
   background: transparent;
   background: rgb(245, 206, 148);
 
-  /* padding: 5px; */
   border-radius: 3px;
   margin: 5px;
   width: 95%;
@@ -106,9 +84,7 @@ select {
 input[type="submit"] {
   font: inherit;
   border: 2px solid rgb(87, 44, 3);
-  /* border-bottom: 2px solid brown; */
   background: rgb(245, 206, 148);
-  /* padding: 5px; */
   border-radius: 3px;
   width: 95%;
 }
@@ -119,9 +95,14 @@ input[type="submit"] {
   left: calc(50% - 200px);
 
   width: 400px;
-  /* height: 40px; */
-  /* border: 1px;
-  border-style: solid; */
+}
+
+#instructions {
+  position: absolute;
+  top: calc(50% - 200px);
+  left: calc(50% - 200px);
+
+  width: 400px;
 }
 
 #character-form {
@@ -129,15 +110,10 @@ input[type="submit"] {
   top: calc(50%);
   left: calc(50% - 150px);
   width: 300px;
-  /* padding-top: 150px; */
-  /* border: 1px;
-  border-style: solid; */
 }
 
 /* Question Responses */
 #question {
-  /* padding-top: max(300px, 25vh); */
-
   position: absolute;
   top: calc(50% - 300px);
   left: calc(50% - 300px);
@@ -170,37 +146,31 @@ input[type="submit"] {
 #question-response-1 {
   position: absolute;
   top: calc(50% - 170px);
-  /* left: calc(40% - 125px); */
   left: calc(50% - 265px);
 }
 #question-response-2 {
   position: absolute;
   top: calc(50% - 170px);
-  /* left: calc(60% - 125px); */
   left: calc(50% + 15px);
 }
 #question-response-3 {
   position: absolute;
   top: 50%;
-  /* left: calc(65% - 125px); */
   left: calc(50% + 80px);
 }
 #question-response-4 {
   position: absolute;
   top: calc(50% + 170px);
-  /* left: calc(60% - 125px); */
   left: calc(50% + 15px);
 }
 #question-response-5 {
   position: absolute;
   top: calc(50% + 170px);
-  /* left: calc(40% - 125px); */
   left: calc(50% - 265px);
 }
 #question-response-6 {
   position: absolute;
   top: 50%;
-  /* left: calc(35% - 125px); */
   left: calc(50% - 330px);
 }
 
@@ -218,7 +188,6 @@ input[type="submit"] {
   left: calc(50% - 40px);
   width: 80px;
   height: 80px;
-  /* fill: white; */
   transition: all 0.2s ease-in-out;
 }
 
@@ -234,8 +203,6 @@ input[type="submit"] {
   left: calc(50% - 200px);
   width: 400px;
   height: 40px;
-  /* padding-top: 25vh; */
-  /* border: 1px solid; */
 }
 
 #story-container {
@@ -246,11 +213,8 @@ input[type="submit"] {
   width: 500px;
   height: 450px;
   display: block;
-  /* flex-direction: column; */
   justify-content: left;
   text-align: left;
-
-  /* border: 1px solid; */
 }
 
 #final-phrase {
@@ -261,11 +225,8 @@ input[type="submit"] {
   width: 500px;
   height: 30px;
   display: block;
-  /* flex-direction: column; */
   justify-content: left;
-  /* text-align: left; */
 
-  /* border: 1px solid; */
   font-size: 20px;
 }
 
@@ -277,7 +238,6 @@ input[type="submit"] {
 
   width: 200px;
   height: 80px;
-  /* padding: 0; */
 
   border: 2px solid rgb(87, 44, 3);
   border-radius: 5px;
