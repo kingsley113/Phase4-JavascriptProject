@@ -4,6 +4,8 @@ let startScreen;
 let characterForm;
 let responseTextCollection;
 let previousResponse = 1;
+let resultsContainer;
+let questionContainer;
 // Identify page elements
 // Set page elements on DOM load
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -44,7 +46,31 @@ class Character {
 
 // Initialize
 function initialize() {
+  // Hide final screen
+  // resultsContainer.classList.add("hidden");
+  // resultsContainer.classList.remove("visible");
+  // Hide question page
+  // questionContainer.classList.add("hidden");
+  // questionContainer.classList.remove("visible");
+  // Show character title page
+  // startScreen.classList.remove("hidden");
+  // startScreen.classList.add("visible");
+
   previousResponse = 1;
+  // Remove listener for if called from reset button
+  // characterForm.removeEventListener("submit", (event) =>
+  //   characterFormAction(event)
+  // );
+  // Hide trait elements
+  // for (let i = 1; i <= 6; i++) {
+  //   const traitEl = document.getElementById(`trait${i}`);
+  //   traitEl.innerText = "";
+  //   traitEl.classList.add("hidden");
+  //   traitEl.classList.remove("visible");
+  // }
+
+  // characterForm.disabled = false;
+  // characterForm.reset();
   // Listen for Character form submit
   characterForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -57,6 +83,12 @@ function initialize() {
     });
   }
 }
+
+// function characterFormAction(event) {
+//   event.preventDefault();
+//   submitCharacter(characterForm.querySelector("#characterName").value);
+//   characterForm.reset();
+// }
 
 // Send Character name to create new character and trigger start of questions
 function submitCharacter(characterName) {
@@ -109,12 +141,15 @@ async function fetchQuestion(questionNumber) {
 function renderQuestion(questionObject) {
   // hide title screen
   startScreen.classList.add("hidden");
+  startScreen.classList.remove("visible");
 
   // Create Question element
   questionText.textContent = questionObject.question;
   // questionContainer.classList.add("visible");
   // questionContainer.classList.remove("hidden");
   questionContainer.classList.toggle("visible", "hidden");
+  // questionContainer.classList.remove("hidden");
+  // questionContainer.classList.add("visible");
   animateToggleResponseOptions(previousResponse);
 
   dice.addEventListener("click", rollDice);
@@ -240,23 +275,24 @@ function renderFinalResults() {
       traitEl.innerText = currentCharacter.responsePhrases[i - 1];
       traitEl.classList.remove("hidden");
       traitEl.classList.add("visible");
-    }, i * 2500);
+    }, i * 1500);
   }
   // Show final phrase
   setTimeout(function () {
     const finalPhrase = document.getElementById("final-phrase");
     finalPhrase.classList.add("visible");
     finalPhrase.classList.remove("hidden");
-  }, 17500);
+  }, 10000);
   // Show 'start over' button
   setTimeout(function () {
     const endUi = document.getElementById("end-ui");
     endUi.classList.remove("hidden");
     endUi.classList.add("visible");
-  }, 18500);
+  }, 12000);
   // Show 'select existing character' button
   fetchExistingCharacters();
   initializeLoadCharacterForm();
+  initializeResetButton();
 }
 
 async function fetchExistingCharacters() {
@@ -284,10 +320,6 @@ function populateExistingCharactersDropdown(characters) {
   }
 }
 
-// TODO: make fetch of all characters only return name and id, no need for all info
-// on form submit, fetch single character
-// assign character as current character
-// re-render final page with new character info
 function initializeLoadCharacterForm() {
   document
     .getElementById("existing-character-form")
@@ -327,7 +359,13 @@ function reloadCurrentCharacter(characterObject) {
   renderFinalResults();
 }
 
+function initializeResetButton() {
+  const resetButton = document.getElementById("reset");
+  resetButton.addEventListener("click", () => {
+    window.location.reload();
+  });
+}
+
 // TODO: Update styling of title page
 // TODO: Update styling of final page
-// TODO: Implement reset function
 // TODO: Implement music?
