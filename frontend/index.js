@@ -313,7 +313,7 @@ async function fetchExistingCharacter(id) {
 
 function reloadCurrentCharacter(characterObject) {
   console.log(characterObject);
-  newCharacter = new Character();
+  const newCharacter = new Character();
   newCharacter._name = characterObject.name;
   newCharacter._id = characterObject.id;
   newCharacter.questionsAnswered = 6;
