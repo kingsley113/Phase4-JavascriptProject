@@ -227,8 +227,10 @@ function renderFinalResults() {
   questionContainer.classList.remove("visible");
   questionContainer.classList.add("hidden");
   // Show title of character
-  const resultTitle = document.getElementById("result-title");
-  resultTitle.innerText = currentCharacter.name() + ", who are you?";
+  setTimeout(function () {
+    const resultTitle = document.getElementById("result-title");
+    resultTitle.innerText = currentCharacter.name() + ", who are you?";
+  }, 1000);
   // Show final screen div
   resultsContainer.classList.toggle("visible", "hidden");
   // Animate through character phrases
@@ -246,8 +248,12 @@ function renderFinalResults() {
     finalPhrase.classList.add("visible");
     finalPhrase.classList.remove("hidden");
   }, 17500);
-  // Show 'start over' button TODO:
-
+  // Show 'start over' button
+  setTimeout(function () {
+    const endUi = document.getElementById("end-ui");
+    endUi.classList.remove("hidden");
+    endUi.classList.add("visible");
+  }, 18500);
   // Show 'select existing character' button
   fetchExistingCharacters();
   initializeLoadCharacterForm();
@@ -323,7 +329,5 @@ function reloadCurrentCharacter(characterObject) {
 
 // TODO: Update styling of title page
 // TODO: Update styling of final page
-// TODO: Complete writing questions and phrases
-// TODO: Update story text on final page
 // TODO: Implement reset function
 // TODO: Implement music?
