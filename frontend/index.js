@@ -46,31 +46,7 @@ class Character {
 
 // Initialize
 function initialize() {
-  // Hide final screen
-  // resultsContainer.classList.add("hidden");
-  // resultsContainer.classList.remove("visible");
-  // Hide question page
-  // questionContainer.classList.add("hidden");
-  // questionContainer.classList.remove("visible");
-  // Show character title page
-  // startScreen.classList.remove("hidden");
-  // startScreen.classList.add("visible");
-
   previousResponse = 1;
-  // Remove listener for if called from reset button
-  // characterForm.removeEventListener("submit", (event) =>
-  //   characterFormAction(event)
-  // );
-  // Hide trait elements
-  // for (let i = 1; i <= 6; i++) {
-  //   const traitEl = document.getElementById(`trait${i}`);
-  //   traitEl.innerText = "";
-  //   traitEl.classList.add("hidden");
-  //   traitEl.classList.remove("visible");
-  // }
-
-  // characterForm.disabled = false;
-  // characterForm.reset();
   // Listen for Character form submit
   characterForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -83,12 +59,6 @@ function initialize() {
     });
   }
 }
-
-// function characterFormAction(event) {
-//   event.preventDefault();
-//   submitCharacter(characterForm.querySelector("#characterName").value);
-//   characterForm.reset();
-// }
 
 // Send Character name to create new character and trigger start of questions
 function submitCharacter(characterName) {
@@ -145,11 +115,7 @@ function renderQuestion(questionObject) {
 
   // Create Question element
   questionText.textContent = questionObject.question;
-  // questionContainer.classList.add("visible");
-  // questionContainer.classList.remove("hidden");
   questionContainer.classList.toggle("visible", "hidden");
-  // questionContainer.classList.remove("hidden");
-  // questionContainer.classList.add("visible");
   animateToggleResponseOptions(previousResponse);
 
   dice.addEventListener("click", rollDice);
