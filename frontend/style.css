@@ -78,6 +78,41 @@ body {
   border-style: solid;
 } */
 
+/* Inputs styling */
+input[type="text"] {
+  font: inherit;
+  font-size: 16pt;
+  border: 2px solid rgb(87, 44, 3);
+  /* border-bottom: 2px solid brown; */
+  background: transparent;
+  padding: 5px;
+  border-radius: 3px;
+  width: 95%;
+}
+select {
+  font: inherit;
+  /* font-size: 18pt; */
+  border: 2px solid rgb(87, 44, 3);
+  /* border-bottom: 2px solid brown; */
+  background: transparent;
+  background: rgb(245, 206, 148);
+
+  /* padding: 5px; */
+  border-radius: 3px;
+  margin: 5px;
+  width: 95%;
+}
+
+input[type="submit"] {
+  font: inherit;
+  border: 2px solid rgb(87, 44, 3);
+  /* border-bottom: 2px solid brown; */
+  background: rgb(245, 206, 148);
+  /* padding: 5px; */
+  border-radius: 3px;
+  width: 95%;
+}
+
 #start-title {
   position: absolute;
   top: calc(50% - 300px);
@@ -92,8 +127,8 @@ body {
 #character-form {
   position: absolute;
   top: calc(50%);
-  left: calc(50% - 200px);
-  width: 400px;
+  left: calc(50% - 150px);
+  width: 300px;
   /* padding-top: 150px; */
   /* border: 1px;
   border-style: solid; */
@@ -209,7 +244,7 @@ body {
   left: calc(50% - 250px);
 
   width: 500px;
-  height: 500px;
+  height: 450px;
   display: block;
   /* flex-direction: column; */
   justify-content: left;
@@ -220,7 +255,7 @@ body {
 
 #final-phrase {
   position: absolute;
-  top: calc(50% + 310px);
+  top: calc(50% + 260px);
   left: calc(50% - 250px);
 
   width: 500px;
@@ -231,27 +266,35 @@ body {
   /* text-align: left; */
 
   /* border: 1px solid; */
+  font-size: 20px;
 }
 
 /* Start Again Button */
 #reset {
   position: absolute;
-  top: calc(50% + 360px);
+  top: calc(50% + 320px);
   left: calc(50% - 250px);
 
   width: 200px;
-  height: 40px;
+  height: 80px;
+  /* padding: 0; */
 
-  border: 2px solid;
+  border: 2px solid rgb(87, 44, 3);
+  border-radius: 5px;
+
+  font: inherit;
+  font-size: 16pt;
+  background-color: rgb(245, 206, 148);
 }
 
 #existing-character-form {
   position: absolute;
-  top: calc(50% + 360px);
+  top: calc(50% + 320px);
   left: calc(50% + 50px);
 
   width: 200px;
-  height: 40px;
+  height: 76px;
 
-  border: 2px solid;
+  border: 2px solid rgb(87, 44, 3);
+  border-radius: 5px;
 }

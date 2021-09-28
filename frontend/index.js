@@ -335,3 +335,4 @@ function initializeResetButton() {
 // TODO: Update styling of title page
 // TODO: Update styling of final page
 // TODO: Implement music?
+// TODO: Fix timing of button animation
