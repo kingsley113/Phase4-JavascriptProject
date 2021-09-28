@@ -180,7 +180,7 @@ function submitResponse(number) {
 function animateToggleResponseOptions(startingNumber) {
   let currentBox = startingNumber;
   for (let i = 1; i <= 6; i++) {
-    toggleResponseBox(currentBox, i * 120);
+    toggleResponseBox(currentBox, i * 80);
 
     if (currentBox === 6) {
       currentBox = 1;
@@ -248,7 +248,7 @@ function renderFinalResults() {
     const finalPhrase = document.getElementById("final-phrase");
     finalPhrase.classList.add("visible");
     finalPhrase.classList.remove("hidden");
-  }, 10000);
+  }, 10500);
   // Show 'start over' button
   setTimeout(function () {
     const endUi = document.getElementById("end-ui");
