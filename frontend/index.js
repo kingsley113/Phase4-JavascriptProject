@@ -226,19 +226,26 @@ function renderFinalResults() {
   // Hide questions page
   questionContainer.classList.remove("visible");
   questionContainer.classList.add("hidden");
+  // Show title of character
+  const resultTitle = document.getElementById("result-title");
+  resultTitle.innerText = currentCharacter.name() + ", who are you?";
   // Show final screen div
   resultsContainer.classList.toggle("visible", "hidden");
   // Animate through character phrases
   for (let i = 1; i <= 6; i++) {
     const traitEl = document.getElementById(`trait${i}`);
     setTimeout(function () {
-      traitEl.innerText =
-        currentCharacter.responsePhrases[i - 1] +
-        ` This is placeholder filler for story trait ${i}. `;
+      traitEl.innerText = currentCharacter.responsePhrases[i - 1];
       traitEl.classList.remove("hidden");
       traitEl.classList.add("visible");
-    }, i * 2000);
+    }, i * 2500);
   }
+  // Show final phrase
+  setTimeout(function () {
+    const finalPhrase = document.getElementById("final-phrase");
+    finalPhrase.classList.add("visible");
+    finalPhrase.classList.remove("hidden");
+  }, 17500);
   // Show 'start over' button TODO:
 
   // Show 'select existing character' button
