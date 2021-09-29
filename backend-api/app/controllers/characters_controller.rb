@@ -3,14 +3,12 @@ class CharactersController < ApplicationController
 	def index
 		characters = Character.all
 		render json: CharactersSerializer.new(characters).to_serialized_json
-		# render json: characters
 	end
 	
 	def create 
 		character = Character.new(character_params)
-		# character.name = params[:name]
 		if character.save
-			render json: character #, status: :created
+			render json: character
 		else
 			render json: character.errors, status: :unprocessable_entity 
 		end

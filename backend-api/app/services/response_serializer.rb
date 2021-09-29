@@ -5,9 +5,7 @@ class ResponseSerializer
 
 	def to_serialized_json
 		options = {
-			# TODO: fix this section
 			include: {
-				# question: {:only => [:id, :[answer%{response.response}]]},
 				character: {
 					except: [:created_at, :updated_at]}
 			},
