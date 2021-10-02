@@ -6,7 +6,7 @@ let responseTextCollection;
 let previousResponse = 1;
 let resultsContainer;
 let questionContainer;
-// Identify page elements
+
 
 // Set page elements on DOM load
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   initialize();
 });
+
 
 // Declare Object Classes
 class Character {
@@ -42,6 +43,7 @@ class Character {
   }
 }
 
+
 // Initialize
 function initialize() {
   previousResponse = 1;
@@ -58,6 +60,7 @@ function initialize() {
     });
   }
 }
+
 
 // Send Character name to create new character and trigger start of questions
 function submitCharacter(characterName) {
@@ -86,9 +89,11 @@ function submitCharacter(characterName) {
     });
 }
 
+
 function createCharacter() {
   currentCharacter = new Character(this.name, this.id, 0); 
 }
+
 
 // Fetch question - pass in current question # requested
 async function fetchQuestion(questionNumber) {
@@ -105,11 +110,10 @@ async function fetchQuestion(questionNumber) {
     });
 }
 
+
 // Render question
 function renderQuestion(questionObject) {
   // hide title screen
-  // startScreen.classList.add("hidden"); //TODO: move to helper method
-  // startScreen.classList.remove("visible");
 	hideElement.call(startScreen);
 	
   // Create Question element
@@ -124,6 +128,7 @@ function renderQuestion(questionObject) {
     responseTextCollection[i].textContent = questionObject[`answer${i + 1}`];
   }
 }
+
 
 function rollDice() {
 	// Remove dice listener to only allow one click per roll
@@ -143,6 +148,7 @@ function rollDice() {
   }, 4000);
 }
 // TODO: Questions to ask at review - about dice timing
+
 
 // When selected send fetch request to sever with question_id, character_id, & response #
 function submitResponse(number) {
@@ -178,6 +184,7 @@ function submitResponse(number) {
     });
 }
 
+
 function animateResponseOptionsTransition(startingNumber) {
   let currentBox = startingNumber;
   for (let i = 1; i <= 6; i++) {
@@ -191,11 +198,13 @@ function animateResponseOptionsTransition(startingNumber) {
   }
 }
 
+
 function toggleResponseBox(number, delay) {
   setTimeout(function () {
     responseContainerCollection[number - 1].classList.toggle("hidden");
   }, delay);
 }
+
 
 // Update questions answered & response phrases for character
 function updateCharacter() {
@@ -216,19 +225,17 @@ function updateCharacter() {
   }
 }
 
+
 function renderFinalResults() {
   console.log("rendering final results page");
   // Reset the story text, for when reloading a different character
   for (let i = 1; i <= 6; i++) {
     const traitEl = document.getElementById(`trait${i}`);
     traitEl.innerText = "";
-    // traitEl.classList.add("hidden"); //TODO: break out into helper method
-    // traitEl.classList.remove("visible");
 		hideElement.call(traitEl);
   }
   // Hide questions page
-  questionContainer.classList.remove("visible"); //TODO: break out into helper method
-  questionContainer.classList.add("hidden");
+	hideElement.call(questionContainer);
   // Show title of character
   const resultTitle = document.getElementById("result-title");
   resultTitle.innerText = currentCharacter.name() + ", who are you?";
@@ -241,23 +248,17 @@ function renderFinalResults() {
     const traitEl = document.getElementById(`trait${i}`);
     setTimeout(function () {
       traitEl.innerText = currentCharacter.responsePhrases[i - 1];
-      // traitEl.classList.remove("hidden"); //TODO: break out into helper method
-      // traitEl.classList.add("visible");
 			showElement.call(traitEl);
     }, i * 1500);
   }
   // Show final phrase
   setTimeout(function () {
     const finalPhrase = document.getElementById("final-phrase");
-    // finalPhrase.classList.add("visible"); //TODO: break out into helper method
-    // finalPhrase.classList.remove("hidden");
 		showElement.call(finalPhrase);
   }, 10500);
   // Show 'start over' button
   setTimeout(function () {
     const endUi = document.getElementById("end-ui");
-    // endUi.classList.remove("hidden"); //TODO: break out into helper method
-    // endUi.classList.add("visible");
 		showElement.call(endUi)
   }, 12000);
   // Show 'select existing character' button
@@ -265,6 +266,7 @@ function renderFinalResults() {
   initializeLoadCharacterForm();
   initializeResetButton();
 }
+
 
 async function fetchExistingCharacters() {
   await fetch(`http://localhost:3000/characters`)
@@ -280,6 +282,7 @@ async function fetchExistingCharacters() {
     });
 }
 
+
 function populateExistingCharactersDropdown(characters) {
   const dropdownMenu = document.getElementById("select-character");
   for (const character of characters) {
@@ -290,6 +293,7 @@ function populateExistingCharactersDropdown(characters) {
   }
 }
 
+
 function initializeLoadCharacterForm() {
   document
     .getElementById("existing-character-form")
@@ -298,6 +302,7 @@ function initializeLoadCharacterForm() {
       fetchExistingCharacter(document.getElementById("select-character").value);
     });
 }
+
 
 //TODO: check if we actually need the async functions
 async function fetchExistingCharacter(id) {
@@ -315,6 +320,7 @@ async function fetchExistingCharacter(id) {
     });
 }
 
+
 function reloadCurrentCharacter(characterObject) {
   const newCharacter = new Character();
   newCharacter._name = characterObject.name;
@@ -327,6 +333,7 @@ function reloadCurrentCharacter(characterObject) {
   renderFinalResults();
 }
 
+
 function initializeResetButton() {
   const resetButton = document.getElementById("reset");
   resetButton.addEventListener("click", () => {
@@ -334,11 +341,13 @@ function initializeResetButton() {
   });
 }
 
+
 // Hide Element function
 function hideElement() {
 	this.classList.remove("visible");
   this.classList.add("hidden");
 }
+
 
 // Show Element function
 function showElement() {
