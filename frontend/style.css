@@ -133,6 +133,8 @@ input[type="submit"] {
   background-position: center;
 
   transition: all 0.2s ease-in-out;
+
+	cursor: pointer;
 }
 
 .response-container:hover {
@@ -193,6 +195,7 @@ input[type="submit"] {
 
 #dice:hover {
   transform: scale(1.2);
+	cursor: pointer;
 }
 
 /* Results Page Styles */
