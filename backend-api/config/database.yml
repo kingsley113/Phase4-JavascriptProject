@@ -5,21 +5,58 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  # default sqlite3 configuration
+  # adapter: sqlite3
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # timeout: 5000
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  username: backstory
+  password: <%= ENV['BACKSTORY_DATABASE_PASSWORD'] %>
+
 
 development:
+  # Default sqlite3 configuration
+  # <<: *default
+  # database: db/development.sqlite3
+
+  # Postgresql configuration TODO: fill in info
+  # adapter: postgresql
+  # encoding: unicode
+  # database: BackstoryDatabase
+  # host: localhost
+  # pool: 5
+  # username: backstory
+  # password: MyPassword
+
   <<: *default
-  database: db/development.sqlite3
+  database: backstory_development
+
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  # database: db/test.sqlite3
+  database: backstory_test
+
 
 production:
+  # default sqlite3 configuration
+  # <<: *default
+  # database: db/production.sqlite3
+
+  # Postgresql configuration TODO: Fill in info
+  # adapter: postgresql
+  # encoding: unicode
+  # database: BackstoryDatabase_Production
+  # host: localhost
+  # pool: 5
+  # username: backstory
+  # password: <%= ENV['MyDatabase_Password'] %>
   <<: *default
-  database: db/production.sqlite3
+  database: backstory_production
+  role: MyRole
