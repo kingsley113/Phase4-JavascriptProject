@@ -5,7 +5,7 @@
 
 The app uses a Javacript/HTML/CSS front end to do the heay lifting, and a Rails backend API with a PostgreSQL Database to store and retireve data. 
 
-## Install Instruction
+## Install Instructions
 To install this app and run a local copy, follow these steps:
 
 Fork and download the repository
