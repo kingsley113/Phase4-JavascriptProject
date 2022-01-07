@@ -12,5 +12,16 @@
   "license": "MIT",
   "dependencies": {
     "jsdom": "^19.0.0"
-  }
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kingsley113/Phase4-JavascriptProject.git"
+  },
+  "author": "Cameron Kingsley",
+  "bugs": {
+    "url": "https://github.com/kingsley113/Phase4-JavascriptProject/issues"
+  },
+  "homepage": "https://github.com/kingsley113/Phase4-JavascriptProject#readme"
 }
