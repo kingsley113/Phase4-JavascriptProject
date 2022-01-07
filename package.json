@@ -2,6 +2,10 @@
   "name": "who-are-you-background-generator",
   "version": "1.0.0",
   "description": "An app to help generate a background for your new rpg character",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
   "engines": {
     "node": "8.x"
   },
