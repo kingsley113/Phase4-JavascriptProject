@@ -7,7 +7,7 @@ let previousResponse = 1;
 let resultsContainer;
 let questionContainer;
 
-const apiUrl = "https://who-are-you-api.herokuapp.com/";
+const apiUrl = "https://who-are-you-api.herokuapp.com";
 
 // Set page elements on DOM load
 document.addEventListener("DOMContentLoaded", (event) => {
