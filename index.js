@@ -7,6 +7,7 @@ let previousResponse = 1;
 let resultsContainer;
 let questionContainer;
 
+const apiUrl = "https://who-are-you-api.herokuapp.com/";
 
 // Set page elements on DOM load
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -17,20 +18,21 @@ document.addEventListener("DOMContentLoaded", (event) => {
   dice = document.getElementById("dice");
   resultsContainer = document.getElementById("results-container");
 
-  responseContainerCollection = document.querySelectorAll(".response-container");
+  responseContainerCollection = document.querySelectorAll(
+    ".response-container"
+  );
   responseTextCollection = document.querySelectorAll(".response");
 
   initialize();
 });
 
-
 // Declare Object Classes
 class Character {
   constructor(name, id, questionsAnswered = 0) {
     (this._name = name),
-		(this._id = id),
-		(this.questionsAnswered = questionsAnswered),
-		(this.responsePhrases = []);
+      (this._id = id),
+      (this.questionsAnswered = questionsAnswered),
+      (this.responsePhrases = []);
   }
   currentQuestionNo() {
     return this.questionsAnswered + 1;
@@ -43,7 +45,6 @@ class Character {
   }
 }
 
-
 // Initialize
 function initialize() {
   previousResponse = 1;
@@ -53,14 +54,13 @@ function initialize() {
     submitCharacter(characterForm.querySelector("#characterName").value);
   });
 
-	// Listen for Response buttons click
+  // Listen for Response buttons click
   for (let i = 0; i < 6; i++) {
     responseContainerCollection[i].addEventListener("click", (event) => {
       submitResponse(i + 1);
     });
   }
 }
-
 
 // Send Character name to create new character and trigger start of questions
 function submitCharacter(characterName) {
@@ -75,7 +75,7 @@ function submitCharacter(characterName) {
     body: JSON.stringify({ character: formData }),
   };
 
-  fetch("http://localhost:3000/characters", configurationObject)
+  fetch(`${apiUrl}/characters`, configurationObject)
     .then(function (response) {
       return response.json();
     })
@@ -89,15 +89,13 @@ function submitCharacter(characterName) {
     });
 }
 
-
 function createCharacter() {
-  currentCharacter = new Character(this.name, this.id, 0); 
+  currentCharacter = new Character(this.name, this.id, 0);
 }
-
 
 // Fetch question - pass in current question # requested
 async function fetchQuestion(questionNumber) {
-  await fetch(`http://localhost:3000/questions/${questionNumber}`)
+  await fetch(`${apiUrl}/questions/${questionNumber}`)
     .then(function (response) {
       return response.json();
     })
@@ -110,12 +108,11 @@ async function fetchQuestion(questionNumber) {
     });
 }
 
-
 // Render question
 function renderQuestion(questionObject) {
   // hide title screen
-	hideElement.call(startScreen);
-	
+  hideElement.call(startScreen);
+
   // Create Question element
   questionText.textContent = questionObject.question;
   questionContainer.classList.toggle("visible", "hidden");
@@ -129,9 +126,8 @@ function renderQuestion(questionObject) {
   }
 }
 
-
 function rollDice() {
-	// Remove dice listener to only allow one click per roll
+  // Remove dice listener to only allow one click per roll
   dice.removeEventListener("click", rollDice);
   let randNumber;
   for (let i = 0.3; i < 3; i *= 1.05) {
@@ -148,7 +144,6 @@ function rollDice() {
   }, 4000);
 }
 // TODO: Questions to ask at review - about dice timing
-
 
 // When selected send fetch request to sever with question_id, character_id, & response #
 function submitResponse(number) {
@@ -171,7 +166,7 @@ function submitResponse(number) {
     body: JSON.stringify({ response: formData }),
   };
 
-  fetch("http://localhost:3000/responses", configurationObject)
+  fetch(`${apiUrl}/responses`, configurationObject)
     .then(function (response) {
       return response.json();
     })
@@ -183,7 +178,6 @@ function submitResponse(number) {
       alert("An error in the witchcraft occured! Try again.");
     });
 }
-
 
 function animateResponseOptionsTransition(startingNumber) {
   let currentBox = startingNumber;
@@ -198,13 +192,11 @@ function animateResponseOptionsTransition(startingNumber) {
   }
 }
 
-
 function toggleResponseBox(number, delay) {
   setTimeout(function () {
     responseContainerCollection[number - 1].classList.toggle("hidden");
   }, delay);
 }
-
 
 // Update questions answered & response phrases for character
 function updateCharacter() {
@@ -225,17 +217,16 @@ function updateCharacter() {
   }
 }
 
-
 function renderFinalResults() {
   console.log("rendering final results page");
   // Reset the story text, for when reloading a different character
   for (let i = 1; i <= 6; i++) {
     const traitEl = document.getElementById(`trait${i}`);
     traitEl.innerText = "";
-		hideElement.call(traitEl);
+    hideElement.call(traitEl);
   }
   // Hide questions page
-	hideElement.call(questionContainer);
+  hideElement.call(questionContainer);
   // Show title of character
   const resultTitle = document.getElementById("result-title");
   resultTitle.innerText = currentCharacter.name() + ", who are you?";
@@ -248,18 +239,18 @@ function renderFinalResults() {
     const traitEl = document.getElementById(`trait${i}`);
     setTimeout(function () {
       traitEl.innerText = currentCharacter.responsePhrases[i - 1];
-			showElement.call(traitEl);
+      showElement.call(traitEl);
     }, i * 1500);
   }
   // Show final phrase
   setTimeout(function () {
     const finalPhrase = document.getElementById("final-phrase");
-		showElement.call(finalPhrase);
+    showElement.call(finalPhrase);
   }, 10500);
   // Show 'start over' button
   setTimeout(function () {
     const endUi = document.getElementById("end-ui");
-		showElement.call(endUi)
+    showElement.call(endUi);
   }, 12000);
   // Show 'select existing character' button
   fetchExistingCharacters();
@@ -267,9 +258,8 @@ function renderFinalResults() {
   initializeResetButton();
 }
 
-
 async function fetchExistingCharacters() {
-  await fetch(`http://localhost:3000/characters`)
+  await fetch(`${apiUrl}/characters`)
     .then(function (response) {
       return response.json();
     })
@@ -282,7 +272,6 @@ async function fetchExistingCharacters() {
     });
 }
 
-
 function populateExistingCharactersDropdown(characters) {
   const dropdownMenu = document.getElementById("select-character");
   for (const character of characters) {
@@ -293,7 +282,6 @@ function populateExistingCharactersDropdown(characters) {
   }
 }
 
-
 function initializeLoadCharacterForm() {
   document
     .getElementById("existing-character-form")
@@ -303,10 +291,9 @@ function initializeLoadCharacterForm() {
     });
 }
 
-
 //TODO: check if we actually need the async functions
 async function fetchExistingCharacter(id) {
-  await fetch(`http://localhost:3000/characters/${id}`)
+  await fetch(`${apiUrl}/characters/${id}`)
     .then(function (response) {
       return response.json();
     })
@@ -320,7 +307,6 @@ async function fetchExistingCharacter(id) {
     });
 }
 
-
 function reloadCurrentCharacter(characterObject) {
   const newCharacter = new Character();
   newCharacter._name = characterObject.name;
@@ -333,7 +319,6 @@ function reloadCurrentCharacter(characterObject) {
   renderFinalResults();
 }
 
-
 function initializeResetButton() {
   const resetButton = document.getElementById("reset");
   resetButton.addEventListener("click", () => {
@@ -341,16 +326,14 @@ function initializeResetButton() {
   });
 }
 
-
 // Hide Element function
 function hideElement() {
-	this.classList.remove("visible");
+  this.classList.remove("visible");
   this.classList.add("hidden");
 }
 
-
 // Show Element function
 function showElement() {
-	this.classList.remove("hidden");
+  this.classList.remove("hidden");
   this.classList.add("visible");
 }
