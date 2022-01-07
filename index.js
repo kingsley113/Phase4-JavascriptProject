@@ -9,6 +9,14 @@ let questionContainer;
 
 const apiUrl = "https://who-are-you-api.herokuapp.com";
 
+// JSDOM for document DOM reference
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+global.document = new JSDOM(
+  "https://who-are-you-rpg-generator.herokuapp.com/"
+).window.document;
+
 // Set page elements on DOM load
 document.addEventListener("DOMContentLoaded", (event) => {
   startScreen = document.getElementById("start-screen");
