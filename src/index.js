@@ -9,14 +9,6 @@ let questionContainer;
 
 const apiUrl = "https://who-are-you-api.herokuapp.com";
 
-// JSDOM for document DOM reference
-// const jsdom = require("jsdom");
-// const { JSDOM } = jsdom;
-
-// document = new JSDOM(
-//   "https://who-are-you-rpg-generator.herokuapp.com/"
-// ).window.document;
-
 // Set page elements on DOM load
 document.addEventListener("DOMContentLoaded", (event) => {
   startScreen = document.getElementById("start-screen");
@@ -143,7 +135,7 @@ function rollDice() {
     let delay = i * 1000;
     (function (delay, randNumber) {
       setTimeout(function () {
-        dice.src = `public/images/dice-${randNumber}.png`;
+        dice.src = `/public/images/dice-${randNumber}.png`;
       }, delay);
     })(delay, randNumber);
   }
@@ -151,7 +143,6 @@ function rollDice() {
     submitResponse(randNumber);
   }, 4000);
 }
-// TODO: Questions to ask at review - about dice timing
 
 // When selected send fetch request to sever with question_id, character_id, & response #
 function submitResponse(number) {

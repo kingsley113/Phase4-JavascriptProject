@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "description": "An app to help generate a background for your new rpg character",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
     "node": "8.x"
   },
   "license": "MIT",
   "dependencies": {
+    "express": "^4.17.2",
     "jsdom": "^19.0.0"
   },
   "main": "index.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kingsley113/Phase4-JavascriptProject.git"

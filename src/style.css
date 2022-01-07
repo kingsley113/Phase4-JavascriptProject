@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Yatra+One&display=swap");
 
 body {
-  background-image: url("public/images/fantasy-background.jpg");
+  background-image: url("/public/images/fantasy-background.jpg");
   background-color: rgb(221, 177, 112);
   background-position: center;
   background-size: cover;
@@ -134,7 +134,7 @@ input[type="submit"] {
 
   transition: all 0.2s ease-in-out;
 
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .response-container:hover {
@@ -195,7 +195,7 @@ input[type="submit"] {
 
 #dice:hover {
   transform: scale(1.2);
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /* Results Page Styles */
