@@ -1,5 +1,11 @@
 # Phase4-JavascriptProject - Who Are You? - README
 
+## Demo Video
+https://www.youtube.com/watch?v=uXiXFFX1EIk&ab_channel=CameronKingsley
+
+## Project Link
+https://who-are-you-rpg-generator.herokuapp.com/
+
 ## Description
 "Who Are You?" is a simple single page JavaScript application created to help generate a backstory for a role playing game character, such as Dungeons & Dragons, etc. The app is focused on ease of use to create the character and also to allow a completely random character to be created. 
 
